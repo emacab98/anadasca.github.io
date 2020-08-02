@@ -119,13 +119,14 @@ request.send(data); */
  }
 
  function googleSignUp(){
-  //window.location.href='https://pacific-stream-14038.herokuapp.com/auth/begin';
-  alert("Questa funzione fa il login con google")
+  window.location.href='https://git.heroku.com/calm-shore-44304.git/auth/google_oauth2'
 
 } 
 
 function githubSignUp(){
-  window.location.href='https://git.heroku.com/calm-shore-44304.git//auth/google_oauth2';
+  //window.location.href='https://pacific-stream-14038.herokuapp.com/auth/begin';
+  alert("Questa funzione fa il login con github")
+
   
 
 } 
