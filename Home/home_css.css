@@ -27,10 +27,10 @@ img{
 
 
 
-  #my_sign_in, #my_sign_up, #my_home, #my_about_us{
+ .link{
       color: black;
   }
-  #my_sign_in:hover, #my_sign_up:hover, #my_home:hover, #my_about_us:hover
+  .link:hover
   {
     color: white;
   }
