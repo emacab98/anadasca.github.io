@@ -119,7 +119,7 @@ request.send(data); */
  }
 
  function googleSignUp(){
-  window.location.href='https://git.heroku.com/calm-shore-44304.git/auth/google_oauth2'
+  window.location.href='https://calm-shore-44304.herokuapp.com/auth/google_oauth2'
 
 } 
 

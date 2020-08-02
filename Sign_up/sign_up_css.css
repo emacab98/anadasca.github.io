@@ -10,7 +10,7 @@ body {
 
 @font-face {
   font-family: myFirstFont;
-  src: url("..\star_jedi\starjout\Starjout.ttf");
+  src: url("../star_jedi/starjout/Starjout.ttf");
 }
 
 
