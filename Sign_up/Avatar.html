@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>NTR - Avatar</title>
+
+    <!--Poppins font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- my css file-->
+    <link rel="stylesheet" href="avatar_css.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div id="e_background">
+      <div id="e_smallstars"></div>
+      <div id="e_moon"></div>
+    </div>
+    <button type="button" class="my_button">
+      <a href="Sign_up.html" class="my_a">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Back to the SignUp Page!
+      </a>
+    </button>
+    <section class="create-block">
+      <div class = "container" id="avatars">
+        <div class="row">
+          <p id="title">
+            Choose an avatar!
+          </p>
+          <br />
+          <p id="desc">
+            You are almost done! You successfully signed up and yu are now a
+            level zero user, a Muggle! You will level up by commenting, taking
+            tests and posting.
+            (Don't worry, the avatars will update each level)
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+            <br />
+            <input
+              type="radio"
+              id="vernon_r"
+              name="avatar"
+              value="Uncle Vernon"
+            />
+            <label for="vernon_r">Uncle Vernon</label><br />
+          </div>
+          <div class="col-sm-3">
+            <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+            <br />
+            <input
+              type="radio"
+              id="petunia_r"
+              name="avatar"
+              value="Aunt Petunia"
+            />
+            <label for="petunia_r">Aunt Petunia</label><br />
+          </div>
+          <div class="col-sm-3">
+            <img id="kowalski" src="../Images/Avatars_images/kowalski2.JPG" />
+            <br />
+            <input
+              type="radio"
+              id="kowalski_r"
+              name="avatar"
+              value="Jacob Kowalski"
+            />
+            <label for="kowalski_r">Jacob Kowalski</label><br />
+          </div>
+
+          <div class="col-sm-3">
+            <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+            <br />
+            <input type="radio" id="marge_r" name="avatar" value="Aunt Marge" />
+            <label for="marge_r">Aunt Marge</label><br />
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="my_button">
+            <a href="#" class="my_a">
+              Start!
+            </a>
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

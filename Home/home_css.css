@@ -1,5 +1,5 @@
 body{ 
-    background: url("sfondo_home.JPG")  repeat fixed; 
+    
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7,6 +7,10 @@ body{
     font-family: 'Poppins', sans-serif;
     color:black;
     
+  }
+  @font-face {
+    font-family: myFirstFont;
+    src: url("../star_jedi/starjout/Starjout.ttf");
   }
 #navbar{
     background-color: white;
@@ -38,6 +42,7 @@ img{
   }
 
   b{
+    font-family: myFirstFont;
     text-shadow: 1.2px 1.2px #ffb780;
     margin-bottom:30px; 
     font-weight:800; 
@@ -86,7 +91,7 @@ img{
     background-color:#ffb780;
     width: 180px;
     border: none;
-    color: #424254;
+    color:White;
     text-align: center;
     font-weight:600;
     font-size: 20px;

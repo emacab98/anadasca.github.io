@@ -91,7 +91,7 @@ function checkForm(){
     alert("Please fill all the information!");
     return;
   }
-  
+  window.location.href = "Avatar.html";
   var obj = {nickname :  username , email :  email , password : password , profile_pic_path : null};
   var data = JSON.stringify(obj); 
 
@@ -106,7 +106,7 @@ function checkForm(){
       //memorizzazione
       localStorage.setItem("username", risposta.nickname);
        //Reindirizzamento
-        window.location.href = "Profile.html";
+        window.location.href = "Avatar.html";
        
        } 
   else {
