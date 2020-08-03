@@ -16,16 +16,14 @@ function sendData() {
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
             risposta + 
             "\nYour password: " +
-            risposta.password
+            risposta
         );
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
         //window.location.href = "Home.html";
       }
     };
-
     request.setRequestHeader("Content-type", "text/plain");
-
     request.send(data);
   }
   //fine
