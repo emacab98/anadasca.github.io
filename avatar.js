@@ -23,9 +23,7 @@ function sendData() {
         //window.location.href = "Home.html";
       }
     };
-
-    request.setRequestHeader("Content-type", "text/plain");
-
+    request.setRequestHeader("Content-type", "application/json");
     request.send(data);
   }
   //fine
@@ -35,7 +33,6 @@ function sendData() {
     var url = window.location.href;
     var find = /\?/;
     if (find.test(String(url).toLowerCase()) == true) {
-        alert("Came from google!")
       sendData();
     }
   });
