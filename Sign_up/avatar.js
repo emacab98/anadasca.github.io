@@ -2,7 +2,7 @@ function sendData() {
     var params = new URL(document.location).searchParams;
     var code = params.get("id");
     var request = new XMLHttpRequest();
-    var obj = {id: code };
+    var obj = {id: code};
     var data = JSON.stringify(obj); 
     var path =
       "https://calm-shore-44304.herokuapp.com/post_oauth" ;
@@ -14,7 +14,7 @@ function sendData() {
   
         alert(
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
-            risposta.nickname +
+            risposta + 
             "\nYour password: " +
             risposta.password
         );
@@ -23,7 +23,7 @@ function sendData() {
         //window.location.href = "Home.html";
       }
     };
-    request.setRequestHeader("Content-type", "application/json");
+    request.setRequestHeader("Content-type", "text/plain");
     request.send(data);
   }
   //fine
@@ -33,6 +33,7 @@ function sendData() {
     var url = window.location.href;
     var find = /\?/;
     if (find.test(String(url).toLowerCase()) == true) {
+        alert("Came from google!")
       sendData();
     }
   });
