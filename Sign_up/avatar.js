@@ -9,6 +9,8 @@ function sendData() {
     request.open("POST", path, true);
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
+          alert("E' andato tutto bene! " );
+          alert("Risposta senza parse: " + this.response);
         var risposta = JSON.parse(this.response);
         //localStorage.setItem("username", risposta.username);
   
