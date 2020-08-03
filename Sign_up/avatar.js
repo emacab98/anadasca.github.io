@@ -10,7 +10,7 @@ function sendData() {
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
         var risposta = JSON.parse(this.response);
-        localStorage.setItem("username", risposta.username);
+        //localStorage.setItem("username", risposta.username);
   
         alert(
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
@@ -23,9 +23,7 @@ function sendData() {
         //window.location.href = "Home.html";
       }
     };
-
     request.setRequestHeader("Content-type", "text/plain");
-
     request.send(data);
   }
   //fine
