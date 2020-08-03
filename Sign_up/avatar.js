@@ -23,7 +23,9 @@ function sendData() {
         //window.location.href = "Home.html";
       }
     };
+
     request.setRequestHeader("Content-type", "text/plain");
+
     request.send(data);
   }
   //fine
