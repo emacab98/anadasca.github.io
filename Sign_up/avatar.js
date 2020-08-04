@@ -16,9 +16,9 @@ function sendData() {
   
         alert(
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
-            risposta + 
+            risposta.username + 
             "\nYour password: " +
-            risposta
+            risposta.password
         ) ;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
