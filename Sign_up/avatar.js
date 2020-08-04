@@ -9,16 +9,16 @@ function sendData() {
     request.open("POST", path, false);
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
-          alert("E' andato tutto bene! " );
+          //alert("E' andato tutto bene! " );
           //alert("Risposta senza parse: " + this.response);
         var risposta = JSON.parse(this.response);
         //localStorage.setItem("username", risposta.username);
   
         alert(
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
-            risposta.username + 
+            risposta + 
             "\nYour password: " +
-            risposta.password 
+            risposta
         ) ;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
