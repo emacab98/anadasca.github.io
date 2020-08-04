@@ -10,7 +10,7 @@ function sendData() {
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
           alert("E' andato tutto bene! " );
-          /*alert("Risposta senza parse: " + this.response);
+          //alert("Risposta senza parse: " + this.response);
         var risposta = JSON.parse(this.response);
         //localStorage.setItem("username", risposta.username);
   
@@ -19,7 +19,7 @@ function sendData() {
             risposta + 
             "\nYour password: " +
             risposta 
-        ) */;
+        ) ;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
         //window.location.href = "Home.html";
