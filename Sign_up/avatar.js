@@ -10,16 +10,16 @@ function sendData() {
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
           alert("E' andato tutto bene! " );
-          /*alert("Risposta senza parse: " + this.response);
+          alert("Risposta senza parse: " + this.response);
         var risposta = JSON.parse(this.response);
         //localStorage.setItem("username", risposta.username);
   
         alert(
           "You have successfully signed in with Google!\nPlease take notes of these credentials as you might need to use them:\nYour nickname: " +
-            risposta + 
+            risposta.username + 
             "\nYour password: " +
-            risposta 
-        ) */;
+            risposta.password
+        ) ;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
         //window.location.href = "Home.html";
@@ -35,7 +35,7 @@ function sendData() {
     var url = window.location.href;
     var find = /\?/;
     if (find.test(String(url).toLowerCase()) == true) {
-        alert("Came from google!")
+        alert("Came from google or github!")
       sendData();
     }
   });

@@ -125,7 +125,7 @@ request.send(data); */
 
 function githubSignUp(){
   //window.location.href='https://pacific-stream-14038.herokuapp.com/auth/begin';
-  alert("Questa funzione fa il login con github")
+  window.location.href='https://calm-shore-44304.herokuapp.com/auth/github'
 
   
 
