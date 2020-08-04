@@ -6,7 +6,7 @@ function sendData() {
     var data = JSON.stringify(obj); 
     var path =
       "https://calm-shore-44304.herokuapp.com/post_oauth" ;
-    request.open("POST", path, true);
+    request.open("POST", path, false);
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
           alert("E' andato tutto bene! " );
