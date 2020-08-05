@@ -20,7 +20,7 @@ body{
     font-size:xx-large;
     color: white;
   }
-  #desc, #username, label {
+  #desc, #username, label, p {
       color:white;
       text-align: justify;
   }
