@@ -8,8 +8,10 @@ function checkForm(){
       alert("Please fill al the information!");
       return;
     }
+    var obj = {username :  username , password : password };
+    var data = JSON.stringify(obj); 
    
-    /*request.open('GET', 'https://pacific-stream-14038.herokuapp.com/user/'+ username+"/"+password , true)
+    request.open('POST', 'https://calm-shore-44304.herokuapp.com/sign_in', true)
     request.onload = function() {
     
     if (request.status >= 200 && request.status < 400) {
@@ -18,7 +20,8 @@ function checkForm(){
           //memorizzazione
           localStorage.setItem("username", risposta.nickname);
          //Reindirizzamento
-          window.location.href = "Feed.html";
+         alert("Ok!")
+          //window.location.href = "..\Feed\Feed.html";
   
          } 
     else {
@@ -26,8 +29,8 @@ function checkForm(){
         alert("Wrong combination of username and password!");
         } 
   }
-  
-  request.send(); */
+  request.setRequestHeader("Content-type", "text/plain");
+  request.send(data); 
    }
   
    function googleSignIn(){
@@ -38,5 +41,4 @@ function checkForm(){
   } 
   
   function githubSignIn(){
-        //window.location.href='https://pacific-stream-14038.herokuapp.com/auth/begin';
-        alert("Questa funzione fa il login con google") }
+      window.location.href='https://calm-shore-44304.herokuapp.com/auth/github'; }

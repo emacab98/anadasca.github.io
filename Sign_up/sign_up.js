@@ -92,12 +92,14 @@ function checkForm(){
     return;
   }
   window.location.href = "Avatar.html";
-  var obj = {nickname :  username , email :  email , password : password , profile_pic_path : null};
+  
+  
+  var obj = {username :  username , email :  email , password : password , avatar: "", points: 0, level: 0};
   var data = JSON.stringify(obj); 
 
   
   
-  /*request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user' , true)
+  request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user' , true)
   request.onload = function() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
@@ -114,8 +116,8 @@ function checkForm(){
       alert("This combination of nickname and email seems to be already in use! Please try again");
       } 
 }
-request.setRequestHeader("Content-type", "application/json");
-request.send(data); */
+request.setRequestHeader("Content-type", "text/plain");
+request.send(data); 
  }
 
  function googleSignUp(){
