@@ -35,7 +35,7 @@ function sendData() {
         //alert("Came from google or github!")
       sendData();
     }
-    else{$("username").innerHTML = "Hi! " + localStorage.username;}
+    else{$("username").innerHTML = "Hi! " + localStorage.getItem("username");;}
     
 
   });
@@ -55,7 +55,7 @@ function sendData() {
 
   
   
-  request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user/set_avatar' , true)
+  request.open('POST', 'https://calm-shore-44304.herokuapp.com/user/set_avatar' , true)
   request.onload = function() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
