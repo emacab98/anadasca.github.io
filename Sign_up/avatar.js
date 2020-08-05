@@ -11,7 +11,7 @@ function sendData() {
       if (request.status >= 200 && request.status < 400) {
           
         var risposta = JSON.parse(this.response);
-        //localStorage.setItem("username", risposta.username);
+        localStorage.setItem("username", risposta.username);
         alert(" Please take notes of these credentials as you might need to use them:\nYour nickname: " +
         risposta.username + 
         "\nYour password: " +
@@ -35,7 +35,8 @@ function sendData() {
         //alert("Came from google or github!")
       sendData();
     }
-    else{$("username").innerHTML = "Hi! " + localStorage.getItem("username");}
+    else{
+      document.getElementById("username").innerHTML = "Hi " + localStorage.getItem("username");}
     
 
   });
@@ -60,7 +61,7 @@ function sendData() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
       
-      alert("You have successfully completed the sign up!");
+      //alert("You have successfully completed the sign up!");
       //memorizzazione
       localStorage.setItem("avatar", img_src);
        //Reindirizzamento
