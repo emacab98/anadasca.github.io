@@ -35,7 +35,8 @@ function sendData() {
         //alert("Came from google or github!")
       sendData();
     }
-    $("username").innerHTML = localStorage.username;
+    else{$("username").innerHTML = "Hi! " + localStorage.username;}
+    
 
   });
   
@@ -54,7 +55,7 @@ function sendData() {
 
   
   
-  /*request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user/set_avatar' , true)
+  request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user/set_avatar' , true)
   request.onload = function() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
@@ -72,6 +73,6 @@ function sendData() {
       } 
 }
 request.setRequestHeader("Content-type", "text/plain");
-request.send(data); */
+request.send(data); 
 
   }
