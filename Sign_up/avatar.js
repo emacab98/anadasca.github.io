@@ -16,7 +16,7 @@ function sendData() {
         risposta.username + 
         "\nYour password: " +
         risposta.password );
-        $("username").innerHTML = "Hi " + risposta.username;
+        document.getElementById("username").innerHTML = "Hi " + risposta.username;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
         

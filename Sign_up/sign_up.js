@@ -84,8 +84,7 @@ function checkForm() {
     alert("Please fill all the information!");
     return;
   }
-  alert("Username: " + username + "password: " + password + " email: "+ email);
-
+  
   var obj = {
     username: username,
     email: email,
@@ -96,8 +95,7 @@ function checkForm() {
   };
   var data = JSON.stringify(obj);
 
-  alert("Sending");
-  alert("Sending: " + data);
+ 
   request.open("POST", "https://calm-shore-44304.herokuapp.com/signup", false);
   request.onload = function () {
     // Begin accessing JSON data here
@@ -107,7 +105,6 @@ function checkForm() {
       //memorizzazione
       localStorage.setItem("username", risposta.username);
 
-      alert("Username: " + localStorage.getItem("username"));
       //Reindirizzamento
       window.location.href = "Avatar.html";
     } else {
