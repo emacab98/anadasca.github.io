@@ -50,7 +50,7 @@ function sendData() {
   else if(image == "Jacob Kowalski") img_src = "../Images/Avatars_images/kowalski2.JPG";
   else img_src ="../Images/Avatars_images/marge1.jpg";
   var request = new XMLHttpRequest();
-  alert("You selected: " + img_src);
+  //alert("You selected: " + img_src);
   var obj = {username :  localStorage.username , avatar: img_src};
   var data = JSON.stringify(obj); 
 
@@ -61,7 +61,7 @@ function sendData() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
       
-      //alert("You have successfully completed the sign up!");
+      alert("You have successfully completed the sign up!");
       //memorizzazione
       localStorage.setItem("avatar", img_src);
        //Reindirizzamento
