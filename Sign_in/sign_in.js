@@ -11,7 +11,7 @@ function checkForm(){
     var obj = {username :  username , password : password };
     var data = JSON.stringify(obj); 
    
-    request.open('POST', 'https://calm-shore-44304.herokuapp.com/sign_in', true)
+    request.open('POST', 'https://calm-shore-44304.herokuapp.com/signin', true)
     request.onload = function() {
     
     if (request.status >= 200 && request.status < 400) {
