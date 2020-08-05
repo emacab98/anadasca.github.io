@@ -91,15 +91,14 @@ function checkForm(){
     alert("Please fill all the information!");
     return;
   }
-  window.location.href = "Avatar.html";
-  
   
   var obj = {username :  username , email :  email , password : password , avatar: "", points: 0, level: 0};
   var data = JSON.stringify(obj); 
 
   
-  
-  request.open('POST', 'https://pacific-stream-14038.herokuapp.com/user' , true)
+  alert("Sending")
+  alert("Sending: " + data);
+  request.open('POST', 'https://calm-shore-44304.herokuapp.com/signup' , false);
   request.onload = function() {
   // Begin accessing JSON data here
   if (request.status >= 200 && request.status < 400) {
@@ -107,6 +106,8 @@ function checkForm(){
       alert("You have successfully signed up!");
       //memorizzazione
       localStorage.setItem("username", risposta.nickname);
+
+      alert("Username: " + localStorage.getItem("username"));
        //Reindirizzamento
         window.location.href = "Avatar.html";
        

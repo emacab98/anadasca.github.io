@@ -35,7 +35,7 @@ function sendData() {
         //alert("Came from google or github!")
       sendData();
     }
-    else{$("username").innerHTML = "Hi! " + localStorage.getItem("username");;}
+    else{$("username").innerHTML = "Hi! " + localStorage.getItem("username");}
     
 
   });
