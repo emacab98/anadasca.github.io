@@ -8,8 +8,7 @@ $(document).ready(function () {
   var first_what_if = true;
   var first_question = true;
   var first_test = true; 
-    alert("Username: " + username + " Password: " + password + " Points: " + points + " Avatar: " + avatar + " Level " + level);
-  $("#my_img").attr("src",img);
+   
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
   var name = "";
