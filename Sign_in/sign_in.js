@@ -23,7 +23,7 @@ function checkForm(){
           localStorage.setItem("points", risposta.points);
          //Reindirizzamento
          alert("Ok!")
-          window.location.href = "../Home/Home.html";
+          window.location.href = "../Profile/Profile.html";
   
          } 
     else {
