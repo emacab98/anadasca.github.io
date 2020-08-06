@@ -9,6 +9,7 @@ $(document).ready(function () {
   var first_question = true;
   var first_test = true; 
    
+  $("#my_img").attr("src",img);
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
   var name = "";
