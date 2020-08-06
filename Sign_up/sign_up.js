@@ -104,6 +104,8 @@ function checkForm() {
       alert("You have successfully signed up!");
       //memorizzazione
       localStorage.setItem("username", risposta.username);
+      alert("Username: " + risposta.username);
+      alert("Username nello storage: " + localStorage.getItem("username"));
       localStorage.setItem("level", risposta.level);
       localStorage.setItem("points", risposta.points);
 
