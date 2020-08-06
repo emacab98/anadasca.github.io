@@ -4,11 +4,18 @@ var points = localStorage.getItem("points");
 var img = localStorage.getItem("avatar");
 
 $(document).ready(function () {
+    var url = window.location.href;
+    var find = /\?/;
+    if (find.test(String(url).toLowerCase()) == true) {
+        //alert("Came from google or github!")
+      sendData();
+    }
   var first_theory = true;
   var first_what_if = true;
   var first_question = true;
   var first_test = true; 
    
+  
   $("#my_img").attr("src",img);
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
@@ -18,8 +25,8 @@ $(document).ready(function () {
   else if(level == 2) name = "Avenger";
   else if(level == 3) name = "The chosen one";
   else name = "God of Nerd";
-  document.getElementById("level_here").innerHTML = "<b>Level: </b> " + level + "- " + name ;
-  document.getElementById("points_here").innerHTML = "<b>Points: </b> " + points;
+  document.getElementById("level_here").innerHtml = "Level: " +  level + "- " + name ;
+  document.getElementById("points_here").innerHTML ="Points: " + points;
 
   //Codice per capire quanti punti mancano
   //document.getElementById("points_until_here").innerHTML = "<b>Level: </b> " + level;
@@ -135,7 +142,33 @@ $(document).ready(function () {
     findTests();
   }); */
 });
-
+function sendData() {
+    var params = new URL(document.location).searchParams;
+    var code = params.get("id");
+    var request = new XMLHttpRequest();
+    var obj = {id: code};
+    var data = JSON.stringify(obj); 
+    var path =
+      "https://calm-shore-44304.herokuapp.com/post_oauth" ;
+    request.open("POST", path, true);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+          
+        var risposta = JSON.parse(this.response);
+        localStorage.setItem("username", risposta.username);
+        alert(" Please take notes of these credentials as you might need to use them:\nYour nickname: " +
+        risposta.username + 
+        "\nYour password: " +
+        risposta.password );
+        document.getElementById("username").innerHTML = "Hi " + risposta.username;
+      } else {
+        alert("Something went wrong! Try again!\nMessage: " + this.responseText);
+        
+      }
+    };
+    request.setRequestHeader("Content-type", "text/plain");
+    request.send(data);
+  }
 function logout() {
   var result = confirm("Are you sure you want to logout?");
   if (result) {
