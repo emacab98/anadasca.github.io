@@ -28,9 +28,9 @@ $(document).ready(function () {
   $("#message").hide();
   document.getElementById("message").innerHTML =
     "Your posts will appear here! Start creating now";
-  document.getElementById("my_theory").style.color = "#ffb780";
+  document.getElementById("my_theories").style.color = "#ffb780";
 
-  //Funzione che carica le teorie create dinamicamente
+  /*//Funzione che carica le teorie create dinamicamente
   function findTheories() {
     $("#theories_section").show();
     $("#questions_section").hide();
@@ -133,7 +133,7 @@ $(document).ready(function () {
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     findTests();
-  });
+  }); */
 });
 
 function logout() {
@@ -145,10 +145,10 @@ function logout() {
   }
 }
 
-function reply_click() {
+/*function reply_click() {
   window.localStorage.setItem("night_id", this.name);
   window.location.href = "Post_profile.html";
-}
+} */
 
 /*funzione che carica i post dinamicamente
 function populatePost(section, mode) {
