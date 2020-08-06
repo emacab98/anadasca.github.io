@@ -65,7 +65,7 @@ function sendData() {
       //memorizzazione
       localStorage.setItem("avatar", img_src);
        //Reindirizzamento
-        window.location.href = "..\Profile\Profile.html";
+        window.location.href = "../Profile/Profile.html";
        
        } 
   else {

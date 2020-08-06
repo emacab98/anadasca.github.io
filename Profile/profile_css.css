@@ -83,7 +83,21 @@ img {
   outline-color: #ffb780;
   background-color: #ffb780;
   color: black;
-} /*sfondo*/
+} 
+
+
+#username_here, #level_here b, #points_here b, #points_until_here b{
+  font-family: 'Poppins';
+  color: white;
+  font-size: 20px;
+}
+#username_here{
+  font-size: 40px;
+}
+
+
+
+/*sfondo*/
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {

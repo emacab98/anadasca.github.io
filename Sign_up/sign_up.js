@@ -104,6 +104,8 @@ function checkForm() {
       alert("You have successfully signed up!");
       //memorizzazione
       localStorage.setItem("username", risposta.username);
+      localStorage.setItem("level", risposta.level);
+      localStorage.setItem("points", risposta.points);
 
       //Reindirizzamento
       window.location.href = "Avatar.html";

@@ -18,10 +18,12 @@ function checkForm(){
         var risposta = JSON.parse(this.response);
           
           //memorizzazione
-          localStorage.setItem("username", risposta.nickname);
+          localStorage.setItem("username", risposta.username);
+          localStorage.setItem("level", risposta.level);
+          localStorage.setItem("points", risposta.points);
          //Reindirizzamento
          alert("Ok!")
-          //window.location.href = "..\Feed\Feed.html";
+          window.location.href = "../Home/Home.html";
   
          } 
     else {
