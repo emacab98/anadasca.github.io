@@ -1,14 +1,14 @@
 var username = localStorage.getItem("username");
 var level = localStorage.getItem("level");
-var points = localStorage.getiItem("points");
+var points = localStorage.getItem("points");
 var img = localStorage.getItem("avatar");
 
 $(document).ready(function () {
   var first_theory = true;
   var first_what_if = true;
   var first_question = true;
-  var first_test = true;
-
+  var first_test = true; 
+    alert("Username: " + username + " Password: " + password + " Points: " + points + " Avatar: " + avatar + " Level " + level);
   $("#my_img").attr("src",img);
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
