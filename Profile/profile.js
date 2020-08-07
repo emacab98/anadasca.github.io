@@ -22,7 +22,7 @@ $(document).ready(function () {
       request.open("POST", path, false);
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
-            alert("SendData was successful");
+           
           var risposta = JSON.parse(this.response);
           localStorage.setItem("username", risposta.username);
           username = localStorage.getItem("username");
@@ -32,7 +32,7 @@ $(document).ready(function () {
           level = localStorage.getItem("level");
           localStorage.setItem("avatar", risposta.avatar);
           img = localStorage.getItem("avatar");
-          alert("Done");
+          
         } else {
           alert("Something went wrong! Try again!\nMessage: " + this.responseText);
           
