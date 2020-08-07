@@ -86,7 +86,7 @@ img {
 } 
 
 
-#username_here, #level_here b, #points_here b, #points_until_here b{
+#username_here, #level_here , #points_here , #points_until_here {
   font-family: 'Poppins';
   color: white;
   font-size: 20px;
