@@ -41,7 +41,7 @@ $(document).ready(function () {
       request.setRequestHeader("Content-type", "text/plain");
       request.send(data);
     }
-    alert("Username :" + username);
+    //alert("Username :" + username);
   var first_theory = true;
   var first_what_if = true;
   var first_question = true;
