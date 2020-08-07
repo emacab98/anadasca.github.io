@@ -19,6 +19,7 @@ function sendData() {
         document.getElementById("username").innerHTML = "Hi " + risposta.username;
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
+        window.location.href = "../Home/Home.html"
         
       }
     };

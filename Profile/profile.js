@@ -30,7 +30,8 @@ $(document).ready(function () {
           points = localStorage.getItem("points");
           localStorage.setItem("level", risposta.level);
           level = localStorage.getItem("level");
-          img = localStorage.setItem("avatar", risposta.avatar);
+          localStorage.setItem("avatar", risposta.avatar);
+          img = localStorage.getItem("avatar");
           alert("Done");
         } else {
           alert("Something went wrong! Try again!\nMessage: " + this.responseText);

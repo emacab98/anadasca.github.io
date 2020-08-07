@@ -24,7 +24,17 @@ img{
   width:  100px;
   margin: 0px;
 }
+#my_a_p, #my_a_s, #my_a_l {
+  font-family: "Poppins";
+  font-size: large;
+  text-decoration: none;
+  color:#9a9a9a;
+}
+#my_a_p:hover,  #my_a_s:hover, #my_a_l:hover {
+    background-color: #ffb780;
+    color: white;
 
+}
 
 
  .link{

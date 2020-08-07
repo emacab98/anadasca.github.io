@@ -22,6 +22,10 @@ function checkForm() {
 
      
       localStorage.setItem("level", risposta.level);
+      var img = risposta.avatar;
+      if(img == "" || img == null) window.location.href = "../Sign_up/Avatar.html";
+      else localStorage.setItem("avatar", risposta.avatar);
+
      
       //Reindirizzamento
       alert("Ok!");
