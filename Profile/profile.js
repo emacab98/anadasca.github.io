@@ -156,7 +156,7 @@ $(document).ready(function () {
     } else {
       first_what_if = false;
       alert("What ifs!");
-      //populatePost("what_ifs_section", "what-if");
+      populatePost("what_ifs_section", "what-if");
     }
   }
   function findQuestions() {
@@ -176,7 +176,7 @@ $(document).ready(function () {
     } else {
       first_question = false;
       alert("Questions!");
-      //populatePost("questions_section", "question");
+      populatePost("questions_section", "question");
     }
   }
   function findTests() {
@@ -389,8 +389,34 @@ function logout() {
   window.location.href = "Post_profile.html";
 } */
 
+
+/*function findUpvotedNights() {
+  return new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest();
+
+    var path = "https://pacific-stream-14038.herokuapp.com/upvoted/" + username;
+    request.open("GET", path, true);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        var risposta = JSON.parse(this.response);
+
+        localStorage.setItem("upvoted_nights", JSON.stringify(risposta));
+        resolve();
+      } else {
+        alert("Something went wrong. Message: " + this.responseText);
+        reject();
+      }
+    };
+
+    request.send();
+  }); 
+} */
+
+
+
 function populatePost(section, mj_name) {
   var posts = [];
+  var checked_upvoted = false;
   var request = new XMLHttpRequest();
 
   var path =
@@ -475,6 +501,46 @@ function populatePost(section, mj_name) {
           span.innerHTML = "Details";
           //bottone.onclick = reply_click;
           bottone.appendChild(span);
+          
+
+          var link = document.createElement("a");
+          link.id = risposta[index].table.major_element.id + "upvote";
+          link.name = risposta[index].table.major_element.id;
+          if (checked_upvoted == false) {
+            link.className = "my_link";
+            link.innerHTML = risposta[index].table.upvotes + "  " ;
+            //link.onclick = upvote_function;
+            var span = document.createElement("span");
+            span.className = "glyphicon glyphicon-star-empty";
+          } else {
+            link.className = "upvoted";
+            link.innerHTML = risposta[index].table.upvotes + "  ";
+            var span = document.createElement("span");
+            span.className = "glyphicon glyphicon-star";
+          }
+         
+          
+          var spazio = document.createElement("a");
+          spazio.innerHTML = "spazio";
+          spazio.className = "spazio";
+
+          var link2 = document.createElement("a");
+          link2.name = risposta[index].table.major_element.id;
+          link2.id = risposta[index].table.major_element.id + "comment";
+          
+          
+            link2.className = "my_link";
+            link2.innerHTML = risposta[index].table.comments.length + " ";
+            //link2.onclick = comment_function;
+            var span2 = document.createElement("span");
+            span2.className = "glyphicon glyphicon-edit";
+          
+          div_well.appendChild(br);
+          if (checked_upvoted == false) link.appendChild(span);
+          div_well.appendChild(link);
+          div_well.appendChild(spazio);
+          link2.appendChild(span2);
+          div_well.appendChild(link2);
 
           div_well.appendChild(bottone);
 

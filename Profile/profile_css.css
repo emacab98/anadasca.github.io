@@ -31,7 +31,26 @@ img {
     float: left;
     border-radius: 5px;
     }
-    
+  .my_link{
+      color: black;
+      text-decoration: none;
+      
+      
+    }
+  .my_link:hover{
+    text-decoration: none;
+    color: black;
+  }
+  .spazio{
+      color:white;
+      text-decoration: none;
+      
+      
+    }
+  .spazio:hover{
+    text-decoration: none;
+    color:white;
+  }
 #my_list_div{
   border-radius: 5px;
     margin-top: 30px;
@@ -203,11 +222,11 @@ p.inset {
 #message{
   
   font-size: 20px;
-  color: #9999A3;
+  color: white;
   margin-top: 200px ;
   margin-left: 200px;
   
-  color: rgb(153, 153, 153);
+ 
   text-decoration: none;
  
 
