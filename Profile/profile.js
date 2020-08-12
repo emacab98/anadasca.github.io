@@ -2,168 +2,300 @@ var username = localStorage.getItem("username");
 var level = localStorage.getItem("level");
 var points = localStorage.getItem("points");
 var img = localStorage.getItem("avatar");
+var id = localStorage.getItem("id");
 
 $(document).ready(function () {
-  
-    var url = window.location.href;
-    var find = /\?/;
-    if (find.test(String(url).toLowerCase()) == true) {
-        
-      sendData();
+  var url = window.location.href;
+  var find = /\?/;
+  if (find.test(String(url).toLowerCase()) == true) {
+    sendData();
+  }
+
+  function sendData() {
+    var params = new URL(document.location).searchParams;
+    var code = params.get("id");
+    var request = new XMLHttpRequest();
+    var obj = { id: code };
+    var data = JSON.stringify(obj);
+    var path = "https://calm-shore-44304.herokuapp.com/post_oauth";
+    request.open("POST", path, false);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        var risposta = JSON.parse(this.response);
+
+        localStorage.setItem("username", risposta.username);
+        username = localStorage.getItem("username");
+
+        localStorage.setItem("points", risposta.points);
+        points = localStorage.getItem("points");
+
+        localStorage.setItem("level", risposta.level);
+        level = localStorage.getItem("level");
+
+        localStorage.setItem("avatar", risposta.avatar);
+        img = localStorage.getItem("avatar");
+
+        localStorage.setItem("id", risposta.id);
+        id = localStorage.getItem("id");
+      } else {
+        alert(
+          "Something went wrong! Try again!\nMessage: " + this.responseText
+        );
+      }
+    };
+    request.setRequestHeader("Content-type", "text/plain");
+    request.send(data);
+  }
+  checkLevel();
+  function checkLevel() {
+    if (level < 1) {
+      document.getElementById("my_what_ifs").className = "disabled";
+      document.getElementById("my_what_ifs").style.color = "#d1d1d1";
+    } else {
+      document.getElementById("my_what_ifs").className = "abled";
+      document.getElementById("my_what_ifs").style.color = "rgb(153,153,153)";
     }
-    function sendData() {
-      var params = new URL(document.location).searchParams;
-      var code = params.get("id");
-      var request = new XMLHttpRequest();
-      var obj = {id: code};
-      var data = JSON.stringify(obj); 
-      var path =
-        "https://calm-shore-44304.herokuapp.com/post_oauth" ;
-      request.open("POST", path, false);
-      request.onload = function () {
-        if (request.status >= 200 && request.status < 400) {
-           
-          var risposta = JSON.parse(this.response);
-          localStorage.setItem("username", risposta.username);
-          username = localStorage.getItem("username");
-          localStorage.setItem("points", risposta.points);
-          points = localStorage.getItem("points");
-          localStorage.setItem("level", risposta.level);
-          level = localStorage.getItem("level");
-          localStorage.setItem("avatar", risposta.avatar);
-          img = localStorage.getItem("avatar");
-          
-        } else {
-          alert("Something went wrong! Try again!\nMessage: " + this.responseText);
-          
-        }
-      };
-      request.setRequestHeader("Content-type", "text/plain");
-      request.send(data);
+
+    if (level < 2) {
+      document.getElementById("my_tests").className = "disabled";
+      document.getElementById("my_tests").style.color = "#d1d1d1";
+    } else {
+      document.getElementById("my_tests").className = "abled";
+      document.getElementById("my_tests").style.color = "rgb(153,153,153)";
     }
-    //alert("Username :" + username);
+  }
+
   var first_theory = true;
   var first_what_if = true;
   var first_question = true;
-  var first_test = true; 
-   
-  
-  $("#my_img").attr("src",img);
+  var first_test = true;
+  var first_l_theory = true;
+  var first_l_what_if = true;
+  var first_l_question = true;
+  var first_l_test = true;
+
+  $("#my_img").attr("src", img);
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
   var name = "";
-  if(level == 0) name = "Muggle";
-  else if(level == 1) name = "Padawan";
-  else if(level == 2) name = "Avenger";
-  else if(level == 3) name = "The chosen one";
-  else name = "God of Nerd"; 
-  document.getElementById("level_here").innerHTML = "Level: " + level  + " - " + name ;
+  var quote =  "";
+  if (level == 0){
+
+  name = "Muggle";
+  quote = "\"Muggles have garden gnomes, too, you know,\" Harry told Ron as they crossed the lawn\." + "<br>" + "\"Yeah, I've seen those things they think are gnomes,\" said Ron, bent double with his head in a peony bush, \"like fat little Santa Clauses with fishing rods...\”\
+  " + "<br>" + "― J.K. Rowling, Harry Potter and the Chamber of Secrets" ;
+}
+  else if (level == 1) name = "Padawan";
+  else if (level == 2) name = "Avenger";
+  else if (level == 3) name = "The chosen one";
+  else name = "God of Nerd";
+  document.getElementById("level_here").innerHTML =
+    "Level: " + level + " - " + name;
   document.getElementById("points_here").innerHTML = "Points: " + points;
+  document.getElementById("quote").innerHTML = quote;
 
   //Codice per capire quanti punti mancano
   //document.getElementById("points_until_here").innerHTML = "<b>Level: </b> " + level;
-
 
   $("#message").hide();
   document.getElementById("message").innerHTML =
     "Your posts will appear here! Start creating now";
   document.getElementById("my_theories").style.color = "#ffb780";
 
-  //Funzione che carica le teorie create dinamicamente
+   //created
   function findTheories() {
-    $("#theories_section").show();
     $("#questions_section").hide();
     $("#what_ifs_section").hide();
-    
+    $("#tests_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_questions_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_tests_section").hide();
+    $("#theories_section").show();
+
     if (!first_theory) {
       $("#message").hide();
       return;
     } else {
       first_theory = false;
-      alert("Theories!");
-      //populatePost("theories_section", "theory");
+      //alert("Theories!");
+      populatePost("theories_section", "theory");
     }
   }
-
 
   function findWhatIfs() {
     $("#theories_section").hide();
     $("#questions_section").hide();
-     $("#tests_section").hide();
+    $("#tests_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_questions_section").hide();
+    $("#l_tests_section").hide();
+    $("#l_what_ifs_section").hide();
 
     $("#what_ifs_section").show();
+
     if (!first_what_if) {
       $("#message").hide();
       return;
     } else {
       first_what_if = false;
-      alert("What ifs!")
-      //populatePost("what_ifs_section", "what_if");
+      alert("What ifs!");
+      //populatePost("what_ifs_section", "what-if");
     }
-  
-  } 
+  }
   function findQuestions() {
     $("#theories_section").hide();
     $("#what_ifs_section").hide();
-     $("#tests_section").hide();
+    $("#tests_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_tests_section").hide();
+    $("#l_questions_section").hide();
 
     $("#questions_section").show();
+
     if (!first_question) {
       $("#message").hide();
       return;
     } else {
-      first_saved = false;
-      alert("Questions!")
+      first_question = false;
+      alert("Questions!");
       //populatePost("questions_section", "question");
     }
-  } 
+  }
   function findTests() {
     $("#theories_section").hide();
     $("#what_ifs_section").hide();
-     $("#questions_section").hide();
+    $("#questions_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_questions_section").hide();
+    $("#l_tests_section").hide();
 
     $("#tests_section").show();
     if (!first_test) {
       $("#message").hide();
       return;
     } else {
-      first_test= false;
-      alert("Tests!")
-      //populatePost("tests_section", "test");
+      first_test = false;
+      alert("Tests!");
+      //codice per test;
     }
-  } 
+  }
+
+  //liked  
+  function findLikedTheories() {
+    $("#questions_section").hide();
+    $("#what_ifs_section").hide();
+    $("#tests_section").hide();
+    $("#theories_section").hide();
+    $("#l_questions_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_tests_section").hide();
+
+    $("#l_theories_section").show();
+
+    if (!first_l_theory) {
+      $("#message").hide();
+      return;
+    } else {
+      first_l_theory = false;
+      alert("Liked Theories!");
+      //populateLikedPost("l_theories_section", "theory");
+    }
+  }
+
+  function findLikedWhatIfs() {
+    $("#theories_section").hide();
+    $("#questions_section").hide();
+    $("#tests_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_questions_section").hide();
+    $("#l_tests_section").hide();
+    $("#what_ifs_section").hide();
+
+    $("#l_what_ifs_section").show();
+
+    if (!first_l_what_if) {
+      $("#message").hide();
+      return;
+    } else {
+      first_l_what_if = false;
+      alert("Liked What ifs!");
+      //populateLikedPost("l_what_ifs_section", "what-if");
+    }
+  }
+  function findLikedQuestions() {
+    $("#theories_section").hide();
+    $("#what_ifs_section").hide();
+    $("#tests_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_tests_section").hide();
+    $("#questions_section").hide();
+
+    $("#l_questions_section").show();
+
+    if (!first_l_question) {
+      $("#message").hide();
+      return;
+    } else {
+      first_l_questions= false;
+      alert("Liked Questions!");
+      //populateLikedPost("l_questions_section", "question");
+    }
+  }
+  function findLikedTests() {
+    $("#theories_section").hide();
+    $("#what_ifs_section").hide();
+    $("#questions_section").hide();
+    $("#l_theories_section").hide();
+    $("#l_what_ifs_section").hide();
+    $("#l_questions_section").hide();
+    $("#tests_section").hide();
+
+    $("#l_tests_section").show();
+    if (!first_l_test) {
+      $("#message").hide();
+      return;
+    } else {
+      first_l_test = false;
+      alert("Liked Tests!");
+      //codice per liked test;
+    }
+  }
 
 
   //chiamo questa subito perché di default si parte  con my nights selezionato
   findTheories();
 
-  
   $("#my_theories").click(function () {
     document.getElementById("my_theories").style.color = "#ffb780";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
-
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    checkLevel();
     findTheories();
   });
 
+  $("#my_questions").click(function () {
+    document.getElementById("my_questions").style.color = "#ffb780";
+    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    checkLevel();
+    findQuestions();
+  });
 
   $("#my_what_ifs").click(function () {
     document.getElementById("my_what_ifs").style.color = "#ffb780";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
 
     findWhatIfs();
-  });
-
-
-  $("#my_questions").click(function () {
-    document.getElementById("my_questions").style.color = "#ffb780";
-    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
-    findQuestions();
   });
 
   $("#my_tests").click(function () {
@@ -171,8 +303,58 @@ $(document).ready(function () {
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     findTests();
-  }); 
+  });
+
+  $("#my_l_theories").click(function () {
+    document.getElementById("my_l_theories").style.color = "#ffb780";
+    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    checkLevel();
+    findLikedTheories();
+  });
+
+  $("#my_l_questions").click(function () {
+    document.getElementById("my_l_questions").style.color = "#ffb780";
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    checkLevel();
+    findLikedQuestions();
+  });
+
+  $("#my_l_what_ifs").click(function () {
+    document.getElementById("my_l_what_ifs").style.color = "#ffb780";
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
+    checkLevel();
+    findLikedWhatIfs();
+  });
+
+  $("#my_l_tests").click(function () {
+    document.getElementById("my_l_tests").style.color = "#ffb780";
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
+    checkLevel();
+    findLikedTests();
+  });
 });
 
 function logout() {
@@ -189,43 +371,43 @@ function logout() {
   window.location.href = "Post_profile.html";
 } */
 
-/*funzione che carica i post dinamicamente
-function populatePost(section, mode) {
-  var nights = [];
+function populatePost(section, mj_name) {
+  var posts = [];
   var request = new XMLHttpRequest();
 
   var path =
-    "https://pacific-stream-14038.herokuapp.com/perfectnight/myProfile/" +
-    username +
+    "https://calm-shore-44304.herokuapp.com/major_element/created/" +
+    id +
     "/" +
-    mode;
+    mj_name;
   request.open("GET", path, true);
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       var risposta = JSON.parse(this.response);
+      risposta = risposta.result;
       var risposta_str = JSON.stringify(this.response);
+      //alert("Risposta: " + risposta_str);
 
       if (risposta.length == 0) {
-        if (mode == "created")
+        if (mj_name == "theory")
           document.getElementById("message").innerHTML =
-            "Your nights will appear here! Start creating now!";
-        else if (mode == "saved")
+            "Your theories will appear here! Start creating now!";
+        else if (mj_name == "question")
           document.getElementById("message").innerHTML =
-            "Your saved nights will appear here! Browse some on the feed page!";
+            "Your questions will appear here! Start asking now!";
         else
           document.getElementById("message").innerHTML =
-            "Your upvoted nights will appear here! Browse some on the feed page!";
+            "Your what-ifs will appear here! Start suggesting some now!";
         $("#message").show();
       } else {
         var risposta_len = risposta.length;
         $("#message").hide();
-        var nights_section = document.getElementById(section);
+
+        var post_section = document.getElementById(section);
         var index = 0;
-        
 
         for (index = 0; index < risposta_len; index++) {
-          var elementi = 0;
-          nights[index] = risposta[index];
+          posts[index] = risposta[index];
           var div_row = document.createElement("div");
           div_row.className = "row";
 
@@ -237,10 +419,10 @@ function populatePost(section, mode) {
 
           var my_desc_title = document.createElement("p");
           my_desc_title.className = "my_title";
-          my_desc_title.innerHTML = "Description: ";
+          my_desc_title.innerHTML = "Title: ";
           var my_desc = document.createElement("span");
           my_desc.className = "my_elem";
-          my_desc.innerHTML = risposta[index].description;
+          my_desc.innerHTML = risposta[index].table.major_element.name;
           my_desc_title.appendChild(my_desc);
 
           div_well.appendChild(my_desc_title);
@@ -250,239 +432,30 @@ function populatePost(section, mode) {
           my_tag_title.innerHTML = "Tag: ";
           var my_tag = document.createElement("span");
           my_tag.className = "my_elem";
-          my_tag.innerHTML = risposta[index].tag_type;
+          my_tag.innerHTML = risposta[index].table.topic;
           my_tag_title.appendChild(my_tag);
           div_well.appendChild(my_tag_title);
 
-          var my_elements_title = document.createElement("p");
-          my_elements_title.className = "my_title";
-          my_elements_title.innerHTML = "Elements: ";
-          div_well.appendChild(my_elements_title);
-
-          var list = document.createElement("div");
-          list.className = "my_list";
-
-          if (risposta[index].board_game.id != undefined) {
-            elementi += 1;
-
-            var board_game = risposta[index].board_game;
-            var container1 = document.createElement("container");
-            container1.className = "elem" + elementi;
-            var my_board_game = document.createElement("span");
-            my_board_game.className = "my_elem";
-            my_board_game.innerHTML = board_game.name;
-
-            var my_board_game_img = document.createElement("img");
-            my_board_game_img.className = "img-thumbnail";
-            my_board_game_img.src = board_game.imageUrl;
-
-            var br = document.createElement("br");
-            container1.appendChild(my_board_game);
-            container1.appendChild(br);
-            container1.appendChild(my_board_game_img);
-            list.appendChild(container1);
-          }
-
-          if (risposta[index].meal.id != undefined) {
-            elementi += 1;
-            var container2 = document.createElement("container");
-            container2.className = "elem" + elementi;
-
-            var my_meal = document.createElement("span");
-            my_meal.className = "my_elem";
-            my_meal.innerHTML = risposta[index].meal.name;
-
-            var br = document.createElement("br");
-            var my_meal_img = document.createElement("img");
-            my_meal_img.className = "img-thumbnail";
-            my_meal_img.src = risposta[index].meal.image;
-
-            container2.appendChild(my_meal);
-            container2.appendChild(br);
-            container2.appendChild(my_meal_img);
-            list.appendChild(container2);
-          }
-
-          if (risposta[index].cocktail.id != undefined) {
-            elementi += 1;
-            var container3 = document.createElement("container");
-            container3.className = "elem" + elementi;
-            var my_cocktail = document.createElement("span");
-            my_cocktail.className = "my_elem";
-            my_cocktail.innerHTML = risposta[index].cocktail.name;
-
-            var my_cocktail_img = document.createElement("img");
-            my_cocktail_img.className = "img-thumbnail";
-            my_cocktail_img.src = risposta[index].cocktail.image;
-
-            var br = document.createElement("br");
-
-            container3.appendChild(my_cocktail);
-            container3.appendChild(br);
-            container3.appendChild(my_cocktail_img);
-            list.appendChild(container3);
-          }
-          if (risposta[index].beer.name != undefined) {
-            elementi += 1;
-            var container4 = document.createElement("container");
-            container4.className = "elem" + elementi;
-            var my_beer = document.createElement("span");
-            my_beer.className = "my_elem";
-            my_beer.innerHTML = risposta[index].beer.name;
-
-            if (
-              risposta[index].beer.image ==
-              "Sorry, no picture provided for this beer"
-            ) {
-              var my_beer_img = document.createElement("img");
-              my_beer_img.className = "img-thumbnail";
-              my_beer_img.src = "jedi.jpg";
-            } else {
-              var my_beer_img = document.createElement("img");
-              my_beer_img.className = "img-thumbnail";
-              my_beer_img.src = risposta[index].beer.image;
-            }
-
-            var br = document.createElement("br");
-
-            container4.appendChild(my_beer);
-            container4.appendChild(br);
-            container4.appendChild(my_beer_img);
-            list.appendChild(container4);
-          }
-
-          if (risposta[index].artist.id != undefined) {
-            elementi += 1;
-
-            var container5 = document.createElement("container");
-            container5.className = "elem" + elementi;
-            var my_artist = document.createElement("span");
-            my_artist.className = "my_elem";
-            if (risposta[index].artist.tracks != undefined) {
-              var string = "Album: " + risposta[index].artist.name + " by: ";
-              var my_artists = risposta[index].artist.artists;
-
-              var t = 0;
-              var len = my_artists.length;
-              for (t = 0; t < len; t++) {
-                if (t == len - 1) {
-                  string += my_artists[t];
-                } else {
-                  string += my_artists[t] + "& ";
-                }
-              }
-
-              my_artist.innerHTML = string;
-            } else {
-              var string = "Song: " + risposta[index].artist.name + " by: ";
-              var my_artists = risposta[index].artist.artists;
-
-              var t = 0;
-              var len = my_artists.length;
-              for (t = 0; t < len; t++) {
-                if (t == len - 1) {
-                  string += my_artists[t];
-                } else {
-                  string += my_artists + "&  ";
-                }
-              }
-              my_artist.innerHTML = string;
-            }
-
-            var my_artist_img = document.createElement("img");
-            my_artist_img.className = "img-thumbnail";
-            my_artist_img.src = risposta[index].artist.album_image;
-
-            var br = document.createElement("br");
-
-            container5.appendChild(my_artist);
-            container5.appendChild(br);
-            container5.appendChild(my_artist_img);
-            list.appendChild(container5);
-          }
-
-          if (risposta[index].book.volume_id != undefined) {
-            elementi += 1;
-
-            var container6 = document.createElement("container");
-            container6.className = "elem" + elementi;
-
-            var my_book = document.createElement("span");
-            my_book.className = "my_elem";
-            var string = risposta[index].book.title + " by: <br> ";
-            var my_authors = risposta[index].book.authors;
-
-            var t = 0;
-            var len = my_authors.length;
-            for (t = 0; t < len; t++) {
-              if (t == len - 1) {
-                string += my_authors[t];
-              } else {
-                string += my_authors[t] + " & ";
-              }
-            }
-            my_book.innerHTML = string;
-
-            var br = document.createElement("br");
-
-            if (
-              risposta[index].book.image == "Sorry, no picture for this book!"
-            ) {
-              var my_book_img = document.createElement("img");
-              my_book_img.className = "img-thumbnail";
-              my_book_img.src = "jedi.jpg";
-            } else {
-              var my_book_img = document.createElement("img");
-              my_book_img.className = "img-thumbnail";
-              my_book_img.src = risposta[index].book.image;
-            }
-
-            container6.appendChild(my_book);
-            container6.appendChild(br);
-            container6.appendChild(my_book_img);
-            list.appendChild(container6);
-          }
-
-          if (risposta[index].movie.id != undefined) {
-            elementi += 1;
-
-            var container7 = document.createElement("container");
-            container7.className = "elem" + elementi;
-
-            var my_film = document.createElement("span");
-            my_film.className = "my_elem";
-            my_film.innerHTML = risposta[index].movie.title;
-
-            var br = document.createElement("br");
-
-            if (risposta[index].movie.playbill == null) {
-              var my_film_img = document.createElement("img");
-              my_film_img.className = "img-thumbnail";
-              my_film_img.src = "jedi.jpg";
-            } else {
-              var my_film_img = document.createElement("img");
-              my_film_img.className = "img-thumbnail";
-              my_film_img.src = risposta[index].movie.playbill;
-            }
-
-            container7.appendChild(my_film);
-            container7.appendChild(br);
-            container7.appendChild(my_film_img);
-            list.appendChild(container7);
-          }
-
-          div_well.appendChild(list);
+          var my_description_title = document.createElement("p");
+          my_description_title.className = "my_title";
+          my_description_title.innerHTML = "Content: ";
+          div_well.appendChild(my_description_title);
+          var my_content = document.createElement("span");
+          my_content.className = "my_elem";
+          my_content.innerHTML = risposta[index].table.major_element.text;
+          my_description_title.appendChild(my_content);
+          div_well.appendChild(my_description_title);
 
           var bottone = document.createElement("button");
           var br = document.createElement("br");
 
           bottone.type = "button";
           bottone.className += "post_button";
-          bottone.name = risposta[index].id;
+          bottone.name = risposta[index].table.major_element.id;
 
           var span = document.createElement("span");
-          span.innerHTML = "More infos";
-          bottone.onclick = reply_click;
+          span.innerHTML = "Details";
+          //bottone.onclick = reply_click;
           bottone.appendChild(span);
 
           div_well.appendChild(bottone);
@@ -491,13 +464,13 @@ function populatePost(section, mode) {
 
           div_row.appendChild(div_col);
 
-          nights_section.appendChild(div_row);
+          post_section.appendChild(div_row);
         }
-        localStorage.setItem("nights", JSON.stringify(nights));
+        localStorage.setItem("posts", JSON.stringify(posts));
       }
     } else {
       alert("Something went wrong. Message: " + this.responseText);
     }
   };
   request.send();
-} */
+}

@@ -12,6 +12,9 @@ function sendData() {
           
         var risposta = JSON.parse(this.response);
         localStorage.setItem("username", risposta.username);
+        localStorage.setItem("points", risposta.points);
+        localStorage.setItem("level", risposta.level);
+        localStorage.setItem("id", risposta.id);
         alert(" Please take notes of these credentials as you might need to use them:\nYour nickname: " +
         risposta.username + 
         "\nYour password: " +
@@ -43,7 +46,7 @@ function sendData() {
   });
   
   function start(){
-    var image = $("input[type='radio'][name='avatar']:checked").val();
+  var image = $("input[type='radio'][name='avatar']:checked").val();
   var img_src = "";
     
     if(image == "Uncle Vernon") img_src = "../Images/Avatars_images/vern1.jpg";

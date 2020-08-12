@@ -109,6 +109,8 @@ function checkForm() {
 
      
       localStorage.setItem("level", risposta.level);
+
+      localStorage.setItem("id", risposta.id);
       
       //Reindirizzamento
       window.location.href = "Avatar.html";

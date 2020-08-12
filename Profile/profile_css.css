@@ -31,6 +31,7 @@ img {
     }
     
 #my_list_div{
+  border-radius: 5px;
     margin-top: 30px;
     margin-left:10px;
     float:left;
@@ -69,15 +70,21 @@ img {
 .link:hover{
   color: white;
 }
-#my_what_ifs, #my_tests, #my_questions, #my_theories {
+#my_what_ifs, #my_tests, #my_questions, #my_theories, #my_l_what_ifs, #my_l_tests, #my_l_questions, #my_l_theories, .div_title{
     text-decoration: none;
     cursor: pointer;
     color:#9a9a9a;
 }
-#my_what_ifs:hover, #my_tests:hover, #my_questions:hover, #my_theories:hover{
+#my_what_ifs:hover, #my_tests:hover, #my_questions:hover, #my_theories:hover, #my_l_what_ifs:hover, #my_l_tests:hover, #my_l_questions:hover, #my_l_theories:hover{
     color: #ffb780;
 }
-
+.disabled{
+  pointer-events:none;
+  
+}
+.abled{
+  pointer-events: auto;
+}
 .menu_btn:hover,
 #selected {
   outline-color: #ffb780;
@@ -88,13 +95,139 @@ img {
 
 #username_here, #level_here , #points_here , #points_until_here {
   font-family: 'Poppins';
-  color: white;
+  color:#ffb780;
   font-size: 20px;
 }
 #username_here{
   font-size: 40px;
 }
 
+p.inset {
+  border-style: inset;
+  padding: 20px;
+  border-color: white;
+}
+
+/*inizio*/
+.well{
+  background-color:white;
+ 
+  border: none;
+  margin-top : 10px;
+  height: auto;
+  margin-left: 5px;
+  width: 900px;
+  padding: 40px;
+
+}
+#my_center{
+  background-color:white;
+  width: 900px;
+  height: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 5px;
+  
+  }
+
+.post_button{
+  background-color:  #ffb780;
+    width: 150px;
+    border: none;
+    color: black;
+    text-align: center;
+    font-weight:600;
+    padding: 5px;
+    transition: all 0.5s;
+    cursor: pointer;
+    outline-color: #ffb780;
+    font-size: large;
+    font-family: 'Poppins';
+    border-radius: 5px;
+    float:right;
+    margin-bottom: 30px;
+
+}
+
+.post_button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  outline-color: #ffb780;
+}
+
+.post_button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  outline-color: #ffb780;
+  color: white;
+}
+
+.post_button:hover span {
+  padding-right: 25px;
+  outline-color: #ffb780;
+  color: white;
+ 
+}
+
+.post_button:hover span:after {
+  opacity: 1;
+  right: 0;
+  outline-color:  #ffb780;
+  color: white;
+}
+.my_title{
+  color: #ffb780;
+  font-weight: bold;
+  font-size: large;
+
+}
+
+.my_elem{
+ 
+
+  color: black;
+  font-size: medium;
+  font-weight: normal;
+
+
+}
+#message{
+  
+  font-size: 20px;
+  color: #9999A3;
+  margin-top: 200px ;
+  margin-left: 200px;
+  
+  color: rgb(153, 153, 153);
+  text-decoration: none;
+ 
+
+}
+
+#my_img{
+width: 180px;
+margin-left:10px;
+float:left;
+}
+
+
+
+
+
+#center{
+background-image: none;
+height: auto;
+}
+
+
+/*fine */
 
 
 /*sfondo*/

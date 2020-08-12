@@ -20,8 +20,11 @@ function checkForm() {
 
       localStorage.setItem("points", risposta.points);
 
-     
       localStorage.setItem("level", risposta.level);
+
+      localStorage.setItem("id", risposta.id);
+
+
       var img = risposta.avatar;
       if(img == "" || img == null) window.location.href = "../Sign_up/Avatar.html";
       else localStorage.setItem("avatar", risposta.avatar);
