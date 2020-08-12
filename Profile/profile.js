@@ -78,17 +78,33 @@ $(document).ready(function () {
 
   document.getElementById("username_here").innerHTML = username + "'s profile";
   var name = "";
-  var quote =  "";
-  if (level == 0){
+  var quote = "";
+  if (level == 0) {
+    name = "Muggle";
+    quote =
+      '"Muggles have garden gnomes, too, you know," Harry told Ron as they crossed the lawn.' +
+      "<br>" +
+      '"Yeah, I\'ve seen those things they think are gnomes," said Ron, bent double with his head in a peony bush, "like fat little Santa Clauses with fishing rods...”\
+  ' +
+      "<br>" +
+      "― J.K. Rowling, Harry Potter and the Chamber of Secrets";
+  } else if (level == 1) {
+    name = "Padawan";
+    quote =
+      "“Patience, young Padawan. At this rate, you’ll never become a Jedi Knight.” <br> ― Jason Medina, The Manhattanville Incident: An Undead Novel";
+  } else if (level == 2) {
+    name = "Avenger";
+    quote =
+      "“Everyone fails at who they are supposed to be. The measure of a person, of a hero, is how well they succeed at being who they are. It's time for me to be who I am rather than who I'm supposed to be.” <br> ― Avengers Endgame";
+  } else if (level == 3) {
+    name = "The chosen one";
+    quote = "“Be careful not to choke on your aspirations.” <br> -Darth Vader";
+  } else {
+    name = "God of Nerd";
+    quote =
+      "“YOU'RE STRONG, BUT I COULD SNAP MY FINGERS AND YOU'D ALL CEASE TO EXIST!\” <br> - Thanos";
+  }
 
-  name = "Muggle";
-  quote = "\"Muggles have garden gnomes, too, you know,\" Harry told Ron as they crossed the lawn\." + "<br>" + "\"Yeah, I've seen those things they think are gnomes,\" said Ron, bent double with his head in a peony bush, \"like fat little Santa Clauses with fishing rods...\”\
-  " + "<br>" + "― J.K. Rowling, Harry Potter and the Chamber of Secrets" ;
-}
-  else if (level == 1) name = "Padawan";
-  else if (level == 2) name = "Avenger";
-  else if (level == 3) name = "The chosen one";
-  else name = "God of Nerd";
   document.getElementById("level_here").innerHTML =
     "Level: " + level + " - " + name;
   document.getElementById("points_here").innerHTML = "Points: " + points;
@@ -102,7 +118,7 @@ $(document).ready(function () {
     "Your posts will appear here! Start creating now";
   document.getElementById("my_theories").style.color = "#ffb780";
 
-   //created
+  //created
   function findTheories() {
     $("#questions_section").hide();
     $("#what_ifs_section").hide();
@@ -183,7 +199,7 @@ $(document).ready(function () {
     }
   }
 
-  //liked  
+  //liked
   function findLikedTheories() {
     $("#questions_section").hide();
     $("#what_ifs_section").hide();
@@ -240,7 +256,7 @@ $(document).ready(function () {
       $("#message").hide();
       return;
     } else {
-      first_l_questions= false;
+      first_l_questions = false;
       alert("Liked Questions!");
       //populateLikedPost("l_questions_section", "question");
     }
@@ -264,7 +280,6 @@ $(document).ready(function () {
       //codice per liked test;
     }
   }
-
 
   //chiamo questa subito perché di default si parte  con my nights selezionato
   findTheories();
@@ -310,7 +325,8 @@ $(document).ready(function () {
 
   $("#my_l_theories").click(function () {
     document.getElementById("my_l_theories").style.color = "#ffb780";
-    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_questions").style.color =
+      "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
@@ -333,9 +349,10 @@ $(document).ready(function () {
   $("#my_l_what_ifs").click(function () {
     document.getElementById("my_l_what_ifs").style.color = "#ffb780";
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_questions").style.color =
+      "rgb(153, 153, 153)";
     document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
-     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
@@ -347,7 +364,8 @@ $(document).ready(function () {
     document.getElementById("my_l_tests").style.color = "#ffb780";
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_questions").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_questions").style.color =
+      "rgb(153, 153, 153)";
     document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
