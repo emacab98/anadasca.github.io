@@ -484,7 +484,7 @@ function populatePost(section, mj_name, mode) {
           span.innerHTML = "Details";
           //bottone.onclick = reply_click;
           bottone.appendChild(span);
-          
+         
 
           var link = document.createElement("a");
           link.id = risposta[index].table.major_element.id + "upvote";
@@ -518,7 +518,7 @@ function populatePost(section, mj_name, mode) {
             span2.className = "glyphicon glyphicon-edit";
           
           div_well.appendChild(br);
-          if (checked_upvoted == false) link.appendChild(span);
+          if (mode =="created") link.appendChild(span);
           div_well.appendChild(link);
           div_well.appendChild(spazio);
           link2.appendChild(span2);
