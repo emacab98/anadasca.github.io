@@ -72,7 +72,7 @@ $(document).ready(function () {
   var first_l_theory = true;
   var first_l_what_if = true;
   var first_l_question = true;
-  var first_l_test = true;
+
 
   $("#my_img").attr("src", img);
 
@@ -126,7 +126,7 @@ $(document).ready(function () {
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
     $("#l_what_ifs_section").hide();
-    $("#l_tests_section").hide();
+    
     $("#theories_section").show();
 
     if (!first_theory) {
@@ -135,7 +135,7 @@ $(document).ready(function () {
     } else {
       first_theory = false;
       //alert("Theories!");
-      populatePost("theories_section", "theory");
+      populatePost("theories_section", "theory", "created");
     }
   }
 
@@ -145,7 +145,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
-    $("#l_tests_section").hide();
+    
     $("#l_what_ifs_section").hide();
 
     $("#what_ifs_section").show();
@@ -156,7 +156,7 @@ $(document).ready(function () {
     } else {
       first_what_if = false;
       alert("What ifs!");
-      populatePost("what_ifs_section", "what-if");
+      populatePost("what_ifs_section", "what-if", "created");
     }
   }
   function findQuestions() {
@@ -165,7 +165,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
-    $("#l_tests_section").hide();
+    
     $("#l_questions_section").hide();
 
     $("#questions_section").show();
@@ -176,7 +176,7 @@ $(document).ready(function () {
     } else {
       first_question = false;
       alert("Questions!");
-      populatePost("questions_section", "question");
+      populatePost("questions_section", "question", "created");
     }
   }
   function findTests() {
@@ -186,7 +186,7 @@ $(document).ready(function () {
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
     $("#l_questions_section").hide();
-    $("#l_tests_section").hide();
+   
 
     $("#tests_section").show();
     if (!first_test) {
@@ -207,7 +207,7 @@ $(document).ready(function () {
     $("#theories_section").hide();
     $("#l_questions_section").hide();
     $("#l_what_ifs_section").hide();
-    $("#l_tests_section").hide();
+    
 
     $("#l_theories_section").show();
 
@@ -217,7 +217,7 @@ $(document).ready(function () {
     } else {
       first_l_theory = false;
       alert("Liked Theories!");
-      //populateLikedPost("l_theories_section", "theory");
+      populatePost("l_theories_section", "theory", "upvoted");
     }
   }
 
@@ -227,7 +227,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
-    $("#l_tests_section").hide();
+    
     $("#what_ifs_section").hide();
 
     $("#l_what_ifs_section").show();
@@ -238,7 +238,7 @@ $(document).ready(function () {
     } else {
       first_l_what_if = false;
       alert("Liked What ifs!");
-      //populateLikedPost("l_what_ifs_section", "what-if");
+      populatePost("l_what_ifs_section", "what-if", "upvoted");
     }
   }
   function findLikedQuestions() {
@@ -247,7 +247,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
-    $("#l_tests_section").hide();
+    
     $("#questions_section").hide();
 
     $("#l_questions_section").show();
@@ -258,28 +258,10 @@ $(document).ready(function () {
     } else {
       first_l_questions = false;
       alert("Liked Questions!");
-      //populateLikedPost("l_questions_section", "question");
+      populatePost("l_questions_section", "question", "upvoted");
     }
   }
-  function findLikedTests() {
-    $("#theories_section").hide();
-    $("#what_ifs_section").hide();
-    $("#questions_section").hide();
-    $("#l_theories_section").hide();
-    $("#l_what_ifs_section").hide();
-    $("#l_questions_section").hide();
-    $("#tests_section").hide();
 
-    $("#l_tests_section").show();
-    if (!first_l_test) {
-      $("#message").hide();
-      return;
-    } else {
-      first_l_test = false;
-      alert("Liked Tests!");
-      //codice per liked test;
-    }
-  }
 
   //chiamo questa subito perché di default si parte  con my nights selezionato
   findTheories();
@@ -287,7 +269,7 @@ $(document).ready(function () {
   $("#my_theories").click(function () {
     document.getElementById("my_theories").style.color = "#ffb780";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findTheories();
@@ -296,7 +278,7 @@ $(document).ready(function () {
   $("#my_questions").click(function () {
     document.getElementById("my_questions").style.color = "#ffb780";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findQuestions();
@@ -307,7 +289,7 @@ $(document).ready(function () {
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
 
     findWhatIfs();
@@ -318,7 +300,7 @@ $(document).ready(function () {
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+    
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     findTests();
   });
@@ -329,7 +311,7 @@ $(document).ready(function () {
       "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+   
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findLikedTheories();
@@ -340,7 +322,7 @@ $(document).ready(function () {
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+   
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findLikedQuestions();
@@ -351,7 +333,7 @@ $(document).ready(function () {
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_l_questions").style.color =
       "rgb(153, 153, 153)";
-    document.getElementById("my_l_tests").style.color = "rgb(153, 153, 153)";
+   
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
@@ -360,19 +342,7 @@ $(document).ready(function () {
     findLikedWhatIfs();
   });
 
-  $("#my_l_tests").click(function () {
-    document.getElementById("my_l_tests").style.color = "#ffb780";
-    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_l_questions").style.color =
-      "rgb(153, 153, 153)";
-    document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
-    document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    checkLevel();
-    findLikedTests();
-  });
+ 
 });
 
 function logout() {
@@ -414,13 +384,12 @@ function logout() {
 
 
 
-function populatePost(section, mj_name) {
+function populatePost(section, mj_name, mode) {
   var posts = [];
-  var checked_upvoted = false;
   var request = new XMLHttpRequest();
 
   var path =
-    "https://calm-shore-44304.herokuapp.com/major_element/created/" +
+    "https://calm-shore-44304.herokuapp.com/major_element/" + mode + "/" +
     id +
     "/" +
     mj_name;
@@ -433,15 +402,29 @@ function populatePost(section, mj_name) {
       //alert("Risposta: " + risposta_str);
 
       if (risposta.length == 0) {
+        if(mode == "created"){
         if (mj_name == "theory")
           document.getElementById("message").innerHTML =
             "Your theories will appear here! Start creating now!";
         else if (mj_name == "question")
           document.getElementById("message").innerHTML =
             "Your questions will appear here! Start asking now!";
-        else
+        else if(mj_name == "what-if")
           document.getElementById("message").innerHTML =
             "Your what-ifs will appear here! Start suggesting some now!";
+        }
+        else{
+          if (mj_name == "theory")
+            document.getElementById("message").innerHTML =
+              "Your liked theories will appear here! Start browsing some now!";
+          else if (mj_name == "question")
+            document.getElementById("message").innerHTML =
+              "Your liked questions will appear here! Start browsing some now!";
+          else if(mj_name == "what-if")
+            document.getElementById("message").innerHTML =
+              "Your liked what-ifs will appear here! Start browsing some now!";
+
+        }
         $("#message").show();
       } else {
         var risposta_len = risposta.length;
@@ -506,14 +489,13 @@ function populatePost(section, mj_name) {
           var link = document.createElement("a");
           link.id = risposta[index].table.major_element.id + "upvote";
           link.name = risposta[index].table.major_element.id;
-          if (checked_upvoted == false) {
+          if (mode == "created") {
             link.className = "my_link";
             link.innerHTML = risposta[index].table.upvotes + "  " ;
             //link.onclick = upvote_function;
             var span = document.createElement("span");
             span.className = "glyphicon glyphicon-star-empty";
           } else {
-            link.className = "upvoted";
             link.innerHTML = risposta[index].table.upvotes + "  ";
             var span = document.createElement("span");
             span.className = "glyphicon glyphicon-star";
