@@ -48,7 +48,7 @@ $(document).ready(function () {
   }
   checkLevel();
   function checkLevel() {
-    if (level < 1) {
+    if (level < 2) {
       document.getElementById("my_what_ifs").className = "disabled";
       document.getElementById("my_what_ifs").style.color = "#d1d1d1";
     } else {
@@ -56,7 +56,7 @@ $(document).ready(function () {
       document.getElementById("my_what_ifs").style.color = "rgb(153,153,153)";
     }
 
-    if (level < 2) {
+    if (level < 3) {
       document.getElementById("my_tests").className = "disabled";
       document.getElementById("my_tests").style.color = "#d1d1d1";
     } else {
@@ -72,7 +72,6 @@ $(document).ready(function () {
   var first_l_theory = true;
   var first_l_what_if = true;
   var first_l_question = true;
-
 
   $("#my_img").attr("src", img);
 
@@ -102,7 +101,7 @@ $(document).ready(function () {
   } else {
     name = "God of Nerd";
     quote =
-      "“YOU'RE STRONG, BUT I COULD SNAP MY FINGERS AND YOU'D ALL CEASE TO EXIST!\” <br> - Thanos";
+      "“YOU'RE STRONG, BUT I COULD SNAP MY FINGERS AND YOU'D ALL CEASE TO EXIST!” <br> - Thanos";
   }
 
   document.getElementById("level_here").innerHTML =
@@ -126,7 +125,7 @@ $(document).ready(function () {
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
     $("#l_what_ifs_section").hide();
-    
+
     $("#theories_section").show();
 
     if (!first_theory) {
@@ -145,7 +144,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
-    
+
     $("#l_what_ifs_section").hide();
 
     $("#what_ifs_section").show();
@@ -155,7 +154,7 @@ $(document).ready(function () {
       return;
     } else {
       first_what_if = false;
-      alert("What ifs!");
+     
       populatePost("what_ifs_section", "what-if", "created");
     }
   }
@@ -165,7 +164,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
-    
+
     $("#l_questions_section").hide();
 
     $("#questions_section").show();
@@ -175,7 +174,7 @@ $(document).ready(function () {
       return;
     } else {
       first_question = false;
-      alert("Questions!");
+      
       populatePost("questions_section", "question", "created");
     }
   }
@@ -186,7 +185,6 @@ $(document).ready(function () {
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
     $("#l_questions_section").hide();
-   
 
     $("#tests_section").show();
     if (!first_test) {
@@ -194,7 +192,7 @@ $(document).ready(function () {
       return;
     } else {
       first_test = false;
-      alert("Tests!");
+      
       //codice per test;
     }
   }
@@ -207,7 +205,6 @@ $(document).ready(function () {
     $("#theories_section").hide();
     $("#l_questions_section").hide();
     $("#l_what_ifs_section").hide();
-    
 
     $("#l_theories_section").show();
 
@@ -216,7 +213,7 @@ $(document).ready(function () {
       return;
     } else {
       first_l_theory = false;
-      alert("Liked Theories!");
+
       populatePost("l_theories_section", "theory", "upvoted");
     }
   }
@@ -227,7 +224,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_questions_section").hide();
-    
+
     $("#what_ifs_section").hide();
 
     $("#l_what_ifs_section").show();
@@ -237,7 +234,7 @@ $(document).ready(function () {
       return;
     } else {
       first_l_what_if = false;
-      alert("Liked What ifs!");
+     
       populatePost("l_what_ifs_section", "what-if", "upvoted");
     }
   }
@@ -247,7 +244,7 @@ $(document).ready(function () {
     $("#tests_section").hide();
     $("#l_theories_section").hide();
     $("#l_what_ifs_section").hide();
-    
+
     $("#questions_section").hide();
 
     $("#l_questions_section").show();
@@ -256,12 +253,10 @@ $(document).ready(function () {
       $("#message").hide();
       return;
     } else {
-      first_l_questions = false;
-      alert("Liked Questions!");
+      first_l_question = false;
       populatePost("l_questions_section", "question", "upvoted");
     }
   }
-
 
   //chiamo questa subito perché di default si parte  con my nights selezionato
   findTheories();
@@ -269,8 +264,7 @@ $(document).ready(function () {
   $("#my_theories").click(function () {
     document.getElementById("my_theories").style.color = "#ffb780";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    
-    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findTheories();
   });
@@ -278,8 +272,7 @@ $(document).ready(function () {
   $("#my_questions").click(function () {
     document.getElementById("my_questions").style.color = "#ffb780";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-    
-    document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findQuestions();
   });
@@ -289,9 +282,8 @@ $(document).ready(function () {
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_tests").style.color = "rgb(153, 153, 153)";
-    
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
-
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     findWhatIfs();
   });
 
@@ -300,7 +292,7 @@ $(document).ready(function () {
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-    
+    document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     findTests();
   });
@@ -311,7 +303,7 @@ $(document).ready(function () {
       "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
-   
+
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findLikedTheories();
@@ -322,7 +314,7 @@ $(document).ready(function () {
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
-   
+
     document.getElementById("my_l_what_ifs").style.color = "rgb(153, 153, 153)";
     checkLevel();
     findLikedQuestions();
@@ -333,7 +325,7 @@ $(document).ready(function () {
     document.getElementById("my_l_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_l_questions").style.color =
       "rgb(153, 153, 153)";
-   
+
     document.getElementById("my_what_ifs").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_theories").style.color = "rgb(153, 153, 153)";
     document.getElementById("my_questions").style.color = "rgb(153, 153, 153)";
@@ -341,8 +333,6 @@ $(document).ready(function () {
     checkLevel();
     findLikedWhatIfs();
   });
-
- 
 });
 
 function logout() {
@@ -359,71 +349,143 @@ function logout() {
   window.location.href = "Post_profile.html";
 } */
 
-
-/*function findUpvotedNights() {
+function findUpvotedTheories() {
+  
   return new Promise(function (resolve, reject) {
     var request = new XMLHttpRequest();
 
-    var path = "https://pacific-stream-14038.herokuapp.com/upvoted/" + username;
+    var path =
+      "https://calm-shore-44304.herokuapp.com/major_element/upvoted/" +
+      id +
+      "/theory";
     request.open("GET", path, true);
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
         var risposta = JSON.parse(this.response);
 
-        localStorage.setItem("upvoted_nights", JSON.stringify(risposta));
+        localStorage.setItem("upvoted_theories", JSON.stringify(risposta));
+       
+        
         resolve();
       } else {
         alert("Something went wrong. Message: " + this.responseText);
         reject();
       }
     };
-
     request.send();
-  }); 
-} */
+  });
+}
+function findUpvotedQuestions() {
+ 
+  return new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest();
 
+    var path =
+      "https://calm-shore-44304.herokuapp.com/major_element/upvoted/" +
+      id +
+      "/question";
+    request.open("GET", path, true);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        var risposta = JSON.parse(this.response);
 
+        localStorage.setItem("upvoted_questions", JSON.stringify(risposta));
+        
+        resolve();
+      } else {
+        alert("Something went wrong. Message: " + this.responseText);
+        reject();
+      }
+    };
+    request.send();
+  });
+}
+function findUpvotedWhatIfs() {
+  //alert("Find upvoted what ifs");
+  return new Promise(function (resolve, reject) {
+    var request = new XMLHttpRequest();
 
-function populatePost(section, mj_name, mode) {
+    var path =
+      "https://calm-shore-44304.herokuapp.com/major_element/upvoted/" +
+      id +
+      "/what_if";
+    request.open("GET", path, true);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        var risposta = JSON.parse(this.response);
+
+        localStorage.setItem("upvoted_what_ifs", JSON.stringify(risposta));
+       
+        resolve();
+      } else {
+        alert("Something went wrong. Message: " + this.responseText);
+        reject();
+      }
+    };
+    request.send();
+  });
+}
+
+async function populatePost(section, mj_name, mode) {
+  await Promise.all([
+    findUpvotedTheories().catch(() => {
+      alert("Could not load upvoted theories!");
+      return;
+    }),
+    findUpvotedWhatIfs().catch(() => {
+      alert("Could not load upvoted what-ifs!");
+      return;
+    }),
+    findUpvotedQuestions().catch(() => {
+      alert("Could not load upvoted questions!");
+      return;
+    })]
+  );
+ 
+  upvoted_theories = JSON.parse(localStorage.getItem("upvoted_theories"));
+  upvoted_questions = JSON.parse(localStorage.getItem("upvoted_questions"));
+  upvoted_what_ifs = JSON.parse(localStorage.getItem("upvoted_what_ifs"));
+  
   var posts = [];
   var request = new XMLHttpRequest();
 
   var path =
-    "https://calm-shore-44304.herokuapp.com/major_element/" + mode + "/" +
+    "https://calm-shore-44304.herokuapp.com/major_element/" +
+    mode +
+    "/" +
     id +
     "/" +
     mj_name;
   request.open("GET", path, true);
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
+    
       var risposta = JSON.parse(this.response);
       risposta = risposta.result;
-      var risposta_str = JSON.stringify(this.response);
+      //var risposta_str = JSON.stringify(this.response);
       //alert("Risposta: " + risposta_str);
 
       if (risposta.length == 0) {
-        if(mode == "created"){
-        if (mj_name == "theory")
-          document.getElementById("message").innerHTML =
-            "Your theories will appear here! Start creating now!";
-        else if (mj_name == "question")
-          document.getElementById("message").innerHTML =
-            "Your questions will appear here! Start asking now!";
-        else if(mj_name == "what-if")
-          document.getElementById("message").innerHTML =
-            "Your what-ifs will appear here! Start suggesting some now!";
-        }
-        else{
+        if (mode == "created") {
+          if (mj_name == "theory")
+            document.getElementById("message").innerHTML =
+              "Your theories will appear here! Start creating now!";
+          else if (mj_name == "question")
+            document.getElementById("message").innerHTML =
+              "Your questions will appear here! Start asking now!";
+          else if (mj_name == "what-if")
+            document.getElementById("message").innerHTML =
+              "Your what-ifs will appear here! Start suggesting some now!";
+        } else {
           if (mj_name == "theory")
             document.getElementById("message").innerHTML =
               "Your liked theories will appear here! Start browsing some now!";
           else if (mj_name == "question")
             document.getElementById("message").innerHTML =
               "Your liked questions will appear here! Start browsing some now!";
-          else if(mj_name == "what-if")
+          else if (mj_name == "what-if")
             document.getElementById("message").innerHTML =
               "Your liked what-ifs will appear here! Start browsing some now!";
-
         }
         $("#message").show();
       } else {
@@ -434,6 +496,32 @@ function populatePost(section, mj_name, mode) {
         var index = 0;
 
         for (index = 0; index < risposta_len; index++) {
+         
+          var checked_upvoted = false;
+          var upvoted_len = 0;
+          var element = "";
+          if (mj_name == "theory") {
+            //alert("Theory!")
+            upvoted_len = upvoted_theories.result.length;
+            //alert("Length: " + upvoted_len);
+            element = upvoted_theories.result;
+            //alert("Element: " + element);
+          } else if (mj_name == "question") {
+            upvoted_len = upvoted_questions.length;
+            element = upvoted_questions.result;
+          } else {
+            upvoted_len = upvoted_what_ifs.result.length;
+            element = upvoted_what_ifs.result;
+          }
+
+          for (var j = 0; j < upvoted_len; j++) {
+            if (element[j].table.major_element.id == risposta[index].table.major_element.id) {
+              checked_upvoted = true;
+
+              break;
+            }
+          }
+
           posts[index] = risposta[index];
           var div_row = document.createElement("div");
           div_row.className = "row";
@@ -484,14 +572,13 @@ function populatePost(section, mj_name, mode) {
           span.innerHTML = "Details";
           //bottone.onclick = reply_click;
           bottone.appendChild(span);
-         
 
           var link = document.createElement("a");
           link.id = risposta[index].table.major_element.id + "upvote";
           link.name = risposta[index].table.major_element.id;
-          if (mode == "created") {
-            link.className = "my_link";
-            link.innerHTML = risposta[index].table.upvotes + "  " ;
+          link.className = "my_link";
+          if (!checked_upvoted) {
+            link.innerHTML = risposta[index].table.upvotes + "  ";
             //link.onclick = upvote_function;
             var span = document.createElement("span");
             span.className = "glyphicon glyphicon-star-empty";
@@ -500,8 +587,7 @@ function populatePost(section, mj_name, mode) {
             var span = document.createElement("span");
             span.className = "glyphicon glyphicon-star";
           }
-         
-          
+
           var spazio = document.createElement("a");
           spazio.innerHTML = "spazio";
           spazio.className = "spazio";
@@ -509,16 +595,15 @@ function populatePost(section, mj_name, mode) {
           var link2 = document.createElement("a");
           link2.name = risposta[index].table.major_element.id;
           link2.id = risposta[index].table.major_element.id + "comment";
-          
-          
-            link2.className = "my_link";
-            link2.innerHTML = risposta[index].table.comments.length + " ";
-            //link2.onclick = comment_function;
-            var span2 = document.createElement("span");
-            span2.className = "glyphicon glyphicon-edit";
-          
+
+          link2.className = "my_link";
+          link2.innerHTML = risposta[index].table.comments.length + " ";
+          //link2.onclick = comment_function;
+          var span2 = document.createElement("span");
+          span2.className = "glyphicon glyphicon-edit";
+
           div_well.appendChild(br);
-          if (mode =="created") link.appendChild(span);
+          link.appendChild(span);
           div_well.appendChild(link);
           div_well.appendChild(spazio);
           link2.appendChild(span2);

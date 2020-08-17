@@ -142,7 +142,7 @@ hr {
   display: inline-block;
   position: relative;
   transition: 0.5s;
-  outline-color: #424254;
+
 }
 
 .btn-login span:after {

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>NTR- Profile</title>
+
+    <!--Poppins font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- my css file-->
+    <link rel="stylesheet" href="settings_css.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--My script-->
+    <script src="settings.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse" id="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img src="..\Images\Logo.jpg" />
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="menu_btn">
+            <a class="link" href="../Home/HomeLogin.html">Home</a>
+          </li>
+          <li class="menu_btn">
+            <a class="link" href="../Theory/Theories.html">Theories</a>
+          </li>
+          <li class="menu_btn">
+            <a class="link" href="../What-if/What_ifs.html">What-ifs</a>
+          </li>
+          <li class="menu_btn">
+            <a class="link" href="../Question/Questions.html">Questions</a>
+          </li>
+          <li class="menu_btn">
+            <a class="link" href="../Test/Tests.html">Tests</a>
+          </li>
+          <li class="menu_btn">
+            <a class="link" href="../Rank/Ranks.html">Ranks</a>
+          </li>
+          <li class="menu_btn"><a class="link" href="#">About us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active" id="selected">
+            <div class="dropdown">
+              <button
+                class="btn btn-default dropdown-toggle"
+                type="button"
+                id="my_button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="glyphicon glyphicon-user"></span>
+                User
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="Profile.html" id="my_a_p">
+                    <span class="glyphicon glyphicon-home"></span>
+                    My profile
+                  </a>
+                </li>
+                <li>
+                  <a href="Settings.html" id="my_a_s">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    Settings
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="logout()" id="my_a_l">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Log-out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="e_background">
+      <div id="e_smallstars"></div>
+      <div id="e_moon"></div>
+    </div>
+
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+          <img id="my_img" src="https://picsum.photos/180" />
+          <div id="my_list_div">
+            <p>
+              <a id="my_a_pswd">
+                <span class="glyphicon glyphicon-edit"></span>
+                Change password
+              </a>
+            </p>
+            <p>
+              <a id="my_a_avatar" onclick="changeAvatar()">
+                <span class="glyphicon glyphicon-remove"> </span>
+                Change Avatar
+              </a>
+            </p>
+          </div>
+        </div>
+        <h1 id="settings">Settings</h1>
+        <div class="col-sm-9 text-left" id="center">
+          <div id="my_center">
+            <div class="col-md-5" id="change_pswd">
+              <label for="old_pass" class="text-uppercase label">
+                Old password here:</label
+              >
+              <br />
+              <input
+                type="password"
+                size="30"
+                placeholder="Insert your old password here"
+                class="form-control"
+                id="old_pass"
+              />
+              <br />
+              <p id="old_mess"></p>
+              <label for="new_pass" class="text-uppercase label">
+                New password:</label
+              >
+              <br />
+              <input
+                type="password"
+                size="30"
+                placeholder="Insert your new password here"
+                class="form-control"
+                id="new_pass"
+              />
+              <br />
+              <p id="new_mess"></p>
+              <label for="new_pass_bis" class="text-uppercase label">
+                New password again:</label
+              >
+              <br />
+              <input
+                type="password"
+                size="30"
+                placeholder="Insert your new password again"
+                class="form-control"
+                id="new_pass_bis"
+              />
+              <p id="new_bis_mess"></p>
+              <button id="submit" type="button" class="btn btn-login">
+                <span id="btn_span">Change my password!</span>
+              </button>
+            </div>
+
+            <div class="col-md-5" id="change_avatar">
+             <!--LEVEL 0-->
+              <div class="row">
+                <p class="title">
+                  Level 0: Muggle
+                </p>
+                <div class="col-sm-3">
+                  <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="vernon_r"
+                    name="avatar"
+                    value="Uncle Vernon"
+                  />
+                  <label for="vernon_r">Uncle Vernon</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="petunia_r"
+                    name="avatar"
+                    value="Aunt Petunia"
+                  />
+                  <label for="petunia_r">Aunt Petunia</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img
+                    id="kowalski"
+                    src="../Images/Avatars_images/kowalski2.JPG"
+                  />
+                  <br />
+                  <input
+                    type="radio"
+                    id="kowalski_r"
+                    name="avatar"
+                    value="Jacob Kowalski"
+                  />
+                  <label for="kowalski_r">Jacob Kowalski</label><br />
+                </div>
+
+                <div class="col-sm-3">
+                  <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="marge_r"
+                    name="avatar"
+                    value="Aunt Marge"
+                  />
+                  <label for="marge_r">Aunt Marge</label><br />
+                </div>
+              </div>
+              <!--LEVEL 1-->
+              <div class="row" id="level1">
+                <p class="title">
+                  Level 1: Padawan
+                </p>
+                <div class="col-sm-3">
+                  <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="vernon_r"
+                    name="avatar"
+                    value="Uncle Vernon"
+                  />
+                  <label for="vernon_r">Uncle Vernon</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="petunia_r"
+                    name="avatar"
+                    value="Aunt Petunia"
+                  />
+                  <label for="petunia_r">Aunt Petunia</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img
+                    id="kowalski"
+                    src="../Images/Avatars_images/kowalski2.JPG"
+                  />
+                  <br />
+                  <input
+                    type="radio"
+                    id="kowalski_r"
+                    name="avatar"
+                    value="Jacob Kowalski"
+                  />
+                  <label for="kowalski_r">Jacob Kowalski</label><br />
+                </div>
+
+                <div class="col-sm-3">
+                  <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="marge_r"
+                    name="avatar"
+                    value="Aunt Marge"
+                  />
+                  <label for="marge_r">Aunt Marge</label><br />
+                </div>
+              </div>
+              <!--LEVEL 2-->
+              <div class="row" id="level2">
+                <p class="title">
+                  Level 2: Avenger
+                </p>
+                <div class="col-sm-3">
+                  <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="vernon_r"
+                    name="avatar"
+                    value="Uncle Vernon"
+                  />
+                  <label for="vernon_r">Uncle Vernon</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="petunia_r"
+                    name="avatar"
+                    value="Aunt Petunia"
+                  />
+                  <label for="petunia_r">Aunt Petunia</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img
+                    id="kowalski"
+                    src="../Images/Avatars_images/kowalski2.JPG"
+                  />
+                  <br />
+                  <input
+                    type="radio"
+                    id="kowalski_r"
+                    name="avatar"
+                    value="Jacob Kowalski"
+                  />
+                  <label for="kowalski_r">Jacob Kowalski</label><br />
+                </div>
+
+                <div class="col-sm-3">
+                  <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="marge_r"
+                    name="avatar"
+                    value="Aunt Marge"
+                  />
+                  <label for="marge_r">Aunt Marge</label><br />
+                </div>
+              </div>
+              <!--LEVEL 3-->
+              <div class="row" id="level3">
+                <p class="title">
+                  Level 3: The chosen one
+                </p>
+                <div class="col-sm-3">
+                  <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="vernon_r"
+                    name="avatar"
+                    value="Uncle Vernon"
+                  />
+                  <label for="vernon_r">Uncle Vernon</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="petunia_r"
+                    name="avatar"
+                    value="Aunt Petunia"
+                  />
+                  <label for="petunia_r">Aunt Petunia</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img
+                    id="kowalski"
+                    src="../Images/Avatars_images/kowalski2.JPG"
+                  />
+                  <br />
+                  <input
+                    type="radio"
+                    id="kowalski_r"
+                    name="avatar"
+                    value="Jacob Kowalski"
+                  />
+                  <label for="kowalski_r">Jacob Kowalski</label><br />
+                </div>
+
+                <div class="col-sm-3">
+                  <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="marge_r"
+                    name="avatar"
+                    value="Aunt Marge"
+                  />
+                  <label for="marge_r">Aunt Marge</label><br />
+                </div>
+              </div>
+              <!--LEVEL 4-->
+              <div class="row" id="level4">
+                <p class="title">
+                  Level 4: God of Nerds
+                </p>
+                <div class="col-sm-3">
+                  <img id="vernon" src="../Images/Avatars_images/vern1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="vernon_r"
+                    name="avatar"
+                    value="Uncle Vernon"
+                  />
+                  <label for="vernon_r">Uncle Vernon</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img id="petunia" src="../Images/Avatars_images/pet1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="petunia_r"
+                    name="avatar"
+                    value="Aunt Petunia"
+                  />
+                  <label for="petunia_r">Aunt Petunia</label><br />
+                </div>
+                <div class="col-sm-3">
+                  <img
+                    id="kowalski"
+                    src="../Images/Avatars_images/kowalski2.JPG"
+                  />
+                  <br />
+                  <input
+                    type="radio"
+                    id="kowalski_r"
+                    name="avatar"
+                    value="Jacob Kowalski"
+                  />
+                  <label for="kowalski_r">Jacob Kowalski</label><br />
+                </div>
+
+                <div class="col-sm-3">
+                  <img id="marge" src="../Images/Avatars_images/marge1.jpg" />
+                  <br />
+                  <input
+                    type="radio"
+                    id="marge_r"
+                    name="avatar"
+                    value="Aunt Marge"
+                  />
+                  <label for="marge_r">Aunt Marge</label><br />
+                </div>
+              </div>
+
+
+
+              <!--BUTTON-->
+              <div class="row">
+                <button type="button" class="my_button" id="change">
+                  <a href="#" class="my_a" onclick="start()">
+                    Change!
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
