@@ -31,7 +31,7 @@ body{
     border-radius: 10px;
     position: center absolute;
     width: 620px;
-    height: 400px;
+    height:auto;
     overflow: hidden;
     border-radius: 10px;
 text-align: center;}
