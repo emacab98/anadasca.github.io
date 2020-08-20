@@ -32,7 +32,7 @@ function upvote_function() {
   
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
-          alert("Upvoted!")
+        
         document.getElementById(mj_id + "upvote").innerHTML = "Upvoted";
        
         document.getElementById(mj_id + "upvote").style.color = "#ffb780;";
@@ -42,6 +42,7 @@ function upvote_function() {
         document.getElementById(mj_id + "upvote").onclick = function () {
           return false;
         };
+        window.location.href = "Questions.html"
       } else {
         alert("Something went wrong, please try again!");
       }
