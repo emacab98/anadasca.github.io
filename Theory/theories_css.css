@@ -155,6 +155,20 @@ p.inset {
   padding: 40px;
   margin-left: 50px;
 }
+#my_button {
+  background-color: white;
+  margin-top: 5px;
+  color: #9a9a9a;
+  border: none;
+  font-size: large;
+  font-family: "Poppins";
+}
+#my_button:hover
+{
+  outline-color: #ffb780;
+  background-color: #ffb780;
+  color: black;
+}
 #my_center {
  
   width: 100%;
@@ -381,6 +395,25 @@ p.inset {
   
   }
   
+  #btn3:disabled , #pop_btn:disabled{
+    border: 2px solid  #ffb780;
+    opacity: 30%;
+    cursor: not-allowed;
+    background-color: #ffb780;
+  
+    color: white
+  }
+  
+  #btn3:disabled span,  .my_button2:disabled span {
+    cursor: not-allowed;
+  }
+  #btn3:disabled span:after, .my_button2:disabled span:after {
+    content: "";
+  }
+  
+  #btn3:hover:disabled span , .my_button2:hover:disabled span{
+    padding-right: 0px;
+  }
   
   
 

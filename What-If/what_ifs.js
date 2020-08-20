@@ -5,9 +5,11 @@ var img = localStorage.getItem("avatar");
 var id = localStorage.getItem("id");
 
 $(document).ready(function () {
- path = "https://calm-shore-44304.herokuapp.com/major_element/theory";
+  if(level<3) $("#btn3").prop("disabled", true);
+  else $("#btn3").prop("disabled", false);
+ path = "https://calm-shore-44304.herokuapp.com/major_element/what_if";
     
-    populatePost("posts", "theory", "all_theories", path);
+    populatePost("posts", "what_if", "all_what_ifs", path);
   });
   
 function logout() {
@@ -31,7 +33,7 @@ function upvote_function() {
   
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
-          alert("Tutto ok!")
+          alert("Upvoted!")
         document.getElementById(mj_id + "upvote").innerHTML = "Upvoted";
        
         document.getElementById(mj_id + "upvote").style.color = "#ffb780;";
@@ -51,38 +53,37 @@ function upvote_function() {
   
 function SearchByTag() {
     document.getElementById("search_tag_name_msg").innerHTML = "";
-  alert("Here")
+  
     var tag = document.getElementById("tag").value;
-    if (tag == "All theories") {
+    if (tag == "All what_ifs") {
       var path =
-        "https://calm-shore-44304.herokuapp.com/major_element/theory";
-      populatePost("posts", "theory", "all_theories", path) 
+        "https://calm-shore-44304.herokuapp.com/major_element/what_if";
+      populatePost("posts", "what_if", "all_what_ifs", path) 
     } else {
       var path =
-        `https://pacific-stream-14038.herokuapp.com/major_element/theory/` +
+        `https://pacific-stream-14038.herokuapp.com/major_element/what_if/` +
         tag;
-       populatePost("tag", "theory", "topics", path) 
+       populatePost("tag", "what_if", "topics", path) 
     }
   } 
   
 
-function findUpvotedTheories() {
-  
+  function findUpvotedWhatIfs() {
+    //alert("Find upvoted what ifs");
     return new Promise(function (resolve, reject) {
       var request = new XMLHttpRequest();
   
       var path =
         "https://calm-shore-44304.herokuapp.com/major_element/upvoted/" +
         id +
-        "/theory";
+        "/what_if";
       request.open("GET", path, true);
       request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
           var risposta = JSON.parse(this.response);
   
-          localStorage.setItem("upvoted_theories", JSON.stringify(risposta));
+          localStorage.setItem("upvoted_what_ifs", JSON.stringify(risposta));
          
-          
           resolve();
         } else {
           alert("Something went wrong. Message: " + this.responseText);
@@ -95,13 +96,13 @@ function findUpvotedTheories() {
 
 async function populatePost(section, mj_name, mode, path) {
   await Promise.all([
-    findUpvotedTheories().catch(() => {
-      alert("Could not load upvoted theories!");
+    findUpvotedWhatIfs().catch(() => {
+      alert("Could not load upvoted what_ifs!");
       return;
     }),
   ]);
 
-  var upvoted_theories = JSON.parse(localStorage.getItem("upvoted_theories"));
+  upvoted_theories = JSON.parse(localStorage.getItem("upvoted_what_ifs"));
 
   var posts = [];
   var request = new XMLHttpRequest();
@@ -116,21 +117,23 @@ async function populatePost(section, mj_name, mode, path) {
       risposta = risposta.result;
       //var risposta_str = JSON.stringify(this.response);
       //alert("Risposta: " + risposta_str);
-
-      if (errore == "No matches found") {
-        if (mj_name == "theory")
+      //alert("Errore: " + errore);
+     
+      if(errore == "No matches found"){
+     
           document.getElementById("message").innerHTML =
-            "Created theories will appear here! Start creating now!";
+            "Created what-ifs will appear here! Start creating now!";
             $("#search_btn").prop("disabled", true);
             $("#pop_btn").prop("disabled", true);
             $("#btn3").prop("disabled", true);
         $("#message").show();
       } else {
+       
         var risposta_len = risposta.length;
         $("#message").hide();
 
       
-        if (mode == "all_theories") {
+        if (mode == "all_what_ifs") {
           
             
             $("#posts").empty();
@@ -148,22 +151,11 @@ async function populatePost(section, mj_name, mode, path) {
             $("#popularity_feed").hide();
             $("#pop_btn").hide();
             $("#tags").show();
-            alert("Topics!")
             
-          }
-
-          else{
-            $("#popularity_feed").empty();
-            $("#posts").hide();
-            $("#tags").hide();
-            $("#pop_btn").hide();
-            $("#popularity_feed").show();
-            
-
           }
         var post_section = document.getElementById(section);
         var index = 0;
-
+        
         for (index = 0; index < risposta_len; index++) {
           var checked_upvoted = false;
           var upvoted_len = 0;
@@ -185,6 +177,7 @@ async function populatePost(section, mj_name, mode, path) {
               break;
             }
           }
+ 
 
           posts[index] = risposta[index];
           var div_row = document.createElement("div");
@@ -228,14 +221,7 @@ async function populatePost(section, mj_name, mode, path) {
           var bottone = document.createElement("button");
           var br = document.createElement("br");
 
-          bottone.type = "button";
-          bottone.className += "post_button";
-          bottone.name = risposta[index].table.major_element.id;
-
-          var span = document.createElement("span");
-          span.innerHTML = "Details";
-          //bottone.onclick = reply_click;
-          bottone.appendChild(span);
+         
 
           var link = document.createElement("a");
           link.id = risposta[index].table.major_element.id + "upvote";
@@ -244,17 +230,14 @@ async function populatePost(section, mj_name, mode, path) {
           if (!checked_upvoted) {
             link.className = "my_link";
             link.innerHTML = risposta[index].table.upvotes + "  ";
-            //link.onclick = upvote_function;
+            
             var span1 = document.createElement("span");
             
             span1.className = "glyphicon glyphicon-star-empty";
             link.onclick = upvote_function;
           } else {
             link.className = "upvoted";
-            link.innerHTML = risposta[index].table.upvotes + "  ";
-            var span1 = document.createElement("span");
-            
-            span1.className = "glyphicon glyphicon-star";
+            link.innerHTML = risposta[index].table.upvotes + "   Upvoted";
          
           }
 
@@ -265,22 +248,21 @@ async function populatePost(section, mj_name, mode, path) {
           var link2 = document.createElement("a");
           link2.name = risposta[index].table.major_element.id;
           link2.id = risposta[index].table.major_element.id + "comment";
-
+         
           link2.className = "my_link";
           link2.innerHTML = risposta[index].table.comments.length + " ";
           link2.onclick = comment;
-         
           var span2 = document.createElement("span");
           span2.className = "glyphicon glyphicon-edit";
 
           div_well.appendChild(br);
-          link.appendChild(span1);
+          if(!checked_upvoted) link.appendChild(span1);
           div_well.appendChild(link);
           div_well.appendChild(spazio);
           link2.appendChild(span2);
           div_well.appendChild(link2);
 
-          div_well.appendChild(bottone);
+       
 
           div_col.appendChild(div_well);
 
@@ -288,9 +270,7 @@ async function populatePost(section, mj_name, mode, path) {
 
           post_section.appendChild(div_row);
         }
-        localStorage.setItem("theory", JSON.stringify(posts));
-        
-        
+        localStorage.setItem("what_if", JSON.stringify(posts));
       }
     } else {
       alert("Something went wrong. Message: " + this.responseText);
@@ -302,19 +282,7 @@ async function populatePost(section, mj_name, mode, path) {
 function comment(){
   
   id=this.name;
-  localStorage.setItem("came_from", "theory");
+  localStorage.setItem("came_from", "what_if");
   localStorage.setItem("element_id", id);
   window.location.href = "../Comments/Comments.html"
-}
-
-
-function popularity_order(){
- 
-  var path =
- "https://pacific-stream-14038.herokuapp.com/major_element/order/upvotes/theory"
- 
-    
-
- 
-    populatePost("popularity_feed", "theory", "popularity", path) 
 }

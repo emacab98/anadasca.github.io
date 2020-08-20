@@ -19,7 +19,7 @@
     />
 
     <!-- my css file-->
-    <link rel="stylesheet" href="theories_css.css" />
+    <link rel="stylesheet" href="questions_css.css" />
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -28,7 +28,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!--My script-->
-    <script src="theories.js"></script>
+    <script src="questions.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse" id="navbar">
@@ -40,14 +40,14 @@
           <li class="menu_btn">
             <a class="link" href="../Home/HomeLogin.html">Home</a>
           </li>
-          <li class="menu_btn" id="selected">
+          <li class="menu_btn">
             <a class="link" href="../Theory/Theories.html">Theories</a>
           </li>
           <li class="menu_btn">
-            <a class="link" href="../What-if/What_ifs.html">What-ifs</a>
+            <a class="link" href="../What-If/What_ifs.html">What-ifs</a>
           </li>
-          <li class="menu_btn">
-            <a class="link" href="../Question/Questions.html">Questions</a>
+          <li class="menu_btn" id="selected">
+            <a class="link" href="Questions.html">Questions</a>
           </li>
           <li class="menu_btn">
             <a class="link" href="../Test/Tests.html">Tests</a>
@@ -58,10 +58,10 @@
           <li class="menu_btn"><a class="link" href="#">About us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active" >
+          <li >
             <div class="dropdown">
               <button
-                class="btn btn-default dropdown-toggle"
+                class="btn btn-default dropdown-toggle "
                 type="button"
                 id="my_button"
                 data-toggle="dropdown"
@@ -74,7 +74,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="Profile/Profile.html" id="my_a_p">
+                  <a href="../Profile/Profile.html" id="my_a_p">
                     <span class="glyphicon glyphicon-home"></span>
                     My profile
                   </a>
@@ -118,7 +118,7 @@
              
               <!-- datalist tag specifies a list of pre-defined options for tag input -->
               <datalist id="menu_category">
-                <option value="All theories"></option>
+                <option value="All questions"></option>
                 <option value="Star wars"></option>
                 <option value="Avengers"></option>
                 <option value="Marvel"></option>
@@ -134,7 +134,7 @@
 
              
               <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="search_btn" onclick="SearchByTag()">
+                <button class="btn btn-default" type="submit" id="search_btn">
                   <i class="glyphicon glyphicon-search"></i>
                 </button>
               </span>
@@ -155,7 +155,7 @@
             <div class="col-sm-3">
               <button type="button" class="my_button2" id="btn3">
                 <a href="newTheory.html" class="my_a2">
-                  Create a new theory!
+                  Ask a new question!
                 </a>
               </button>
             </div>
