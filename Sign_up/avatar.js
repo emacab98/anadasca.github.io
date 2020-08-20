@@ -35,6 +35,14 @@ function sendData() {
   $(document).ready(function () {
     var url = window.location.href;
     var find = /\?/;
+    if (level < 1) $("#level1").hide();
+    else $("#level1").show();
+    if (level < 2) $("#level2").hide();
+    else $("#level2").show();
+    if (level < 3) $("#level3").hide();
+    else $("#level3").show();
+    if (level < 4) $("#level4").hide();
+    else $("#level4").show();
     if (find.test(String(url).toLowerCase()) == true) {
         //alert("Came from google or github!")
       sendData();
@@ -52,7 +60,23 @@ function sendData() {
     if(image == "Uncle Vernon") img_src = "../Images/Avatars_images/vern1.jpg";
   else if(image == "Aunt Petunia") img_src = "../Images/Avatars_images/pet1.jpg" ;
   else if(image == "Jacob Kowalski") img_src = "../Images/Avatars_images/kowalski2.JPG";
-  else img_src ="../Images/Avatars_images/marge1.jpg";
+  else if(image=="Aunt Marge") img_src ="../Images/Avatars_images/marge1.jpg";
+  else if(image == "Obi-Wan Kenobi") img_src = "../Images/Avatars_images/obi2.jpg" ;
+  else if(image == "Ashoka") img_src = "../Images/Avatars_images/ashoka2.jpg";
+  else if(image=="Luke Skywalker") img_src ="../Images/Avatars_images/luke1.jpg";
+  else if(image == "Leia Organa") img_src = "../Images/Avatars_images/leia2.jpg" ;
+  else if(image == "Black Widow") img_src = "../Images/Avatars_images/black_widow2.jpg";
+  else if(image=="Ironman") img_src ="../Images/Avatars_images/ironman1.jpg";
+  else if(image == "Captain Marvel") img_src = "../Images/Avatars_images/captainm2.jpg" ;
+  else if(image == "Black Panther") img_src = "../Images/Avatars_images/bp2.JPG";
+  else if(image=="Neo") img_src ="../Images/Avatars_images/neo1.jpg";
+  else if(image == "Daenerys") img_src = "../Images/Avatars_images/daenerys.jpg" ;
+  else if(image == "Harry Potter") img_src = "../Images/Avatars_images/harry1.JPG";
+  else if(image=="Rey") img_src ="../Images/Avatars_images/rey2.jpg";
+  else if(image == "Darth Vader") img_src = "../Images/Avatars_images/vader2.jpg" ;
+  else if(image == "Elsa") img_src = "../Images/Avatars_images/elsa.JPG";
+  else if(image=="Kratos") img_src ="../Images/Avatars_images/kratos2.jpg";
+  else img_src ="../Images/Avatars_images/maleficent.png";
   var request = new XMLHttpRequest();
   //alert("You selected: " + img_src);
   var obj = {username :  localStorage.username , avatar: img_src};

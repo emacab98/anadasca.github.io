@@ -232,7 +232,7 @@ async function populatePost(section, mj_name, mode, path) {
           my_description_title.appendChild(my_content);
           div_well.appendChild(my_description_title);
 
-          var bottone = document.createElement("button");
+         
           var br = document.createElement("br");
 
          

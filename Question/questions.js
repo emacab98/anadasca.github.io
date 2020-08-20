@@ -229,17 +229,12 @@ async function populatePost(section, mj_name, mode, path) {
           my_description_title.appendChild(my_content);
           div_well.appendChild(my_description_title);
 
-          var bottone = document.createElement("button");
+       
           var br = document.createElement("br");
 
-          bottone.type = "button";
-          bottone.className += "post_button";
-          bottone.name = risposta[index].table.major_element.id;
+        
 
-          var span = document.createElement("span");
-          span.innerHTML = "Details";
-          //bottone.onclick = reply_click;
-          bottone.appendChild(span);
+         
 
           var link = document.createElement("a");
           link.id = risposta[index].table.major_element.id + "upvote";
@@ -280,8 +275,7 @@ async function populatePost(section, mj_name, mode, path) {
           link2.appendChild(span2);
           div_well.appendChild(link2);
 
-          div_well.appendChild(bottone);
-
+          
           div_col.appendChild(div_well);
 
           div_row.appendChild(div_col);
