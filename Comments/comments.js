@@ -174,7 +174,7 @@ async function populateComments() {
 
 function upvote_comment() {
   var id = this.name;
-  alert("Id: " + id);
+ 
   var request = new XMLHttpRequest();
   var obj = {
     user_id: user,
@@ -187,7 +187,7 @@ function upvote_comment() {
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
       //var risposta = JSON.parse(this.response);
-      alert("Upvoted!");
+     
       document.getElementById(id + "upvote").innerHTML = "Upvoted";
 
       document.getElementById(id + "upvote").style.color = "#ffb780;";
