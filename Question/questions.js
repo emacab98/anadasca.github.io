@@ -42,7 +42,7 @@ function upvote_function() {
         document.getElementById(mj_id + "upvote").onclick = function () {
           return false;
         };
-        window.location.href = "Questions.html"
+        
       } else {
         alert("Something went wrong, please try again!");
       }
@@ -249,9 +249,14 @@ async function populatePost(section, mj_name, mode, path) {
             
             span1.className = "glyphicon glyphicon-star-empty";
             link.onclick = upvote_function;
+            link.appendChild(span1);
           } else {
             link.className = "upvoted";
-            link.innerHTML = risposta[index].table.upvotes + "   Upvoted";
+            link.innerHTML = risposta[index].table.upvotes ;
+            var span1 = document.createElement("span");
+            
+            span1.className = "glyphicon glyphicon-star";
+            link.appendChild(span1);
          
           }
 
@@ -270,7 +275,7 @@ async function populatePost(section, mj_name, mode, path) {
           span2.className = "glyphicon glyphicon-edit";
 
           div_well.appendChild(br);
-          if(!checked_upvoted) link.appendChild(span1);
+          
           div_well.appendChild(link);
           div_well.appendChild(spazio);
           link2.appendChild(span2);

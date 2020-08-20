@@ -41,7 +41,7 @@ function upvote_function() {
           return false;
         };
 
-        window.location.href = "Theories.html";
+       
       } else {
         alert("Something went wrong, please try again!");
       }

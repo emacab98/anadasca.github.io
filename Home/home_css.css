@@ -24,6 +24,7 @@ img{
   width:  100px;
   margin: 0px;
 }
+
 #my_a_p, #my_a_s, #my_a_l {
   font-family: "Poppins";
   font-size: large;
@@ -50,6 +51,20 @@ img{
     background-color:  #ffb780 ;
     color:black;  
   }
+  #my_button {
+    background-color: white;
+    margin-top: 5px;
+    color: #9a9a9a;
+    border: none;
+    font-size: large;
+    font-family: "Poppins";
+  }
+  #my_button:hover
+{
+  outline-color: #ffb780;
+  background-color: #ffb780;
+  color: black;
+}
 
   b{
     font-family: myFirstFont;
