@@ -1,3 +1,4 @@
+var level = "";
 function sendData() {
     var params = new URL(document.location).searchParams;
     var code = params.get("id");
@@ -14,6 +15,8 @@ function sendData() {
         localStorage.setItem("username", risposta.username);
         localStorage.setItem("points", risposta.points);
         localStorage.setItem("level", risposta.level);
+        level = localStorage.getItem("level");
+        alert("Level: "+ level);
         localStorage.setItem("id", risposta.id);
         alert(" Please take notes of these credentials as you might need to use them:\nYour nickname: " +
         risposta.username + 
@@ -33,6 +36,8 @@ function sendData() {
 
   
   $(document).ready(function () {
+    level = localStorage.getItem("level");
+    alert("Level: " + level);
     var url = window.location.href;
     var find = /\?/;
     if (level < 1) $("#level1").hide();
