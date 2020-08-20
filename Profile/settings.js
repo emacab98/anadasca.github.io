@@ -1,6 +1,6 @@
 var username = localStorage.getItem("username");
-var level = localStorage.getItem("level");
-
+//var level = localStorage.getItem("level");
+var level = 2;
 var points = localStorage.getItem("points");
 var img = localStorage.getItem("avatar");
 var id = localStorage.getItem("id");

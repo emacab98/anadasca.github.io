@@ -16,13 +16,21 @@ function sendData() {
         localStorage.setItem("points", risposta.points);
         localStorage.setItem("level", risposta.level);
         level = localStorage.getItem("level");
-        alert("Level: "+ level);
+        //alert("Level: "+ level);
         localStorage.setItem("id", risposta.id);
         alert(" Please take notes of these credentials as you might need to use them:\nYour nickname: " +
         risposta.username + 
         "\nYour password: " +
         risposta.password );
         document.getElementById("username").innerHTML = "Hi " + risposta.username;
+        if (level < 1) $("#level1").hide();
+        else $("#level1").show();
+        if (level < 2) $("#level2").hide();
+        else $("#level2").show();
+        if (level < 3) $("#level3").hide();
+        else $("#level3").show();
+        if (level < 4) $("#level4").hide();
+        else $("#level4").show();
       } else {
         alert("Something went wrong! Try again!\nMessage: " + this.responseText);
         window.location.href = "../Home/Home.html"
@@ -37,7 +45,7 @@ function sendData() {
   
   $(document).ready(function () {
     level = localStorage.getItem("level");
-    alert("Level: " + level);
+    //alert("Level: " + level);
     var url = window.location.href;
     var find = /\?/;
     if (level < 1) $("#level1").hide();
