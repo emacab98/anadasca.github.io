@@ -239,6 +239,6 @@ function comment() {
 function back_to() {
   if (element == "theory") window.location.href = "../Theory/Theories.html";
   else if (element == "what_if")
-    window.location.href = "../What-If/What_ifs.html";
-  else winfow.location.href = "../Question/Questions.html";
+    window.location.href = "../What_If/What_ifs.html";
+  else window.location.href = "../Question/Questions.html";
 }
