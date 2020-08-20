@@ -155,6 +155,11 @@ p.inset {
   padding: 40px;
   margin-left: 50px;
 }
+#search_tag_name_msg{
+  color:white;
+  font-weight: bold;
+
+}
 #my_button {
   background-color: white;
   margin-top: 5px;

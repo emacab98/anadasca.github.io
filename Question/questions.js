@@ -60,9 +60,9 @@ function SearchByTag() {
       populatePost("posts", "question", "all_questions", path) 
     } else {
       var path =
-        `https://pacific-stream-14038.herokuapp.com/major_element/question/` +
+        `https://calm-shore-44304.herokuapp.com/major_element/question/` +
         tag;
-       populatePost("tag", "question", "topics", path) 
+       populatePost("tags", "question", "topics", path) 
     }
   } 
   
@@ -118,15 +118,29 @@ async function populatePost(section, mj_name, mode, path) {
       //alert("Risposta: " + risposta_str);
       //alert("Errore: " + errore);
      
-      if(errore == "No matches found"){
-     
-          document.getElementById("message").innerHTML =
-            "Asked questions will appear here! Start asking now!";
+      if (errore == "No matches found") {
+        if (mj_name == "question"){
+          if(mode=="all questions"){
+            document.getElementById("message").innerHTML =
+            "Created questions will appear here! Start creating now!";
             $("#search_btn").prop("disabled", true);
             $("#pop_btn").prop("disabled", true);
             $("#btn3").prop("disabled", true);
         $("#message").show();
-      } else {
+          }
+          else if(mode=="topics"){
+            $("#posts").empty();
+            $("#tag").empty();
+
+            
+            $("#tags").hide();
+            $("#posts").hide();
+            document.getElementById("search_tag_name_msg").innerHTML = "Topic not found!";
+
+
+          }
+        }
+      }  else {
         var risposta_len = risposta.length;
         $("#message").hide();
 
@@ -289,4 +303,14 @@ function comment(){
   localStorage.setItem("came_from", "question");
   localStorage.setItem("element_id", id);
   window.location.href = "../Comments/Comments.html"
+}
+function popularity_order(){
+ 
+  var path =
+ "https://calm-shore-44304.herokuapp.com/major_element/order/upvotes/question"
+ 
+    
+
+ 
+    populatePost("popularity_feed", "question", "popularity", path) 
 }

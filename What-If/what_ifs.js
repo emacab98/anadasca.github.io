@@ -119,15 +119,29 @@ async function populatePost(section, mj_name, mode, path) {
       //alert("Risposta: " + risposta_str);
       //alert("Errore: " + errore);
      
-      if(errore == "No matches found"){
-     
-          document.getElementById("message").innerHTML =
-            "Created what-ifs will appear here! Start creating now!";
+      if (errore == "No matches found") {
+        if (mj_name == "what_if"){
+          if(mode=="all wat_ifs"){
+            document.getElementById("message").innerHTML =
+            "Created what_ifs will appear here! Start creating now!";
             $("#search_btn").prop("disabled", true);
             $("#pop_btn").prop("disabled", true);
             $("#btn3").prop("disabled", true);
         $("#message").show();
-      } else {
+          }
+          else if(mode=="topics"){
+            $("#posts").empty();
+            $("#tag").empty();
+
+            
+            $("#tags").hide();
+            $("#posts").hide();
+            document.getElementById("search_tag_name_msg").innerHTML = "Topic not found!";
+
+
+          }
+        }
+      }  else {
        
         var risposta_len = risposta.length;
         $("#message").hide();

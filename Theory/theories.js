@@ -51,17 +51,20 @@ function upvote_function() {
   
 function SearchByTag() {
     document.getElementById("search_tag_name_msg").innerHTML = "";
-  alert("Here")
+ 
     var tag = document.getElementById("tag").value;
     if (tag == "All theories") {
       var path =
         "https://calm-shore-44304.herokuapp.com/major_element/theory";
       populatePost("posts", "theory", "all_theories", path) 
+      
     } else {
+     
       var path =
-        `https://pacific-stream-14038.herokuapp.com/major_element/theory/` +
+        `https://calm-shore-44304.herokuapp.com/major_element/theory/` +
         tag;
-       populatePost("tag", "theory", "topics", path) 
+       
+       populatePost("tags", "theory", "topics", path) 
     }
   } 
   
@@ -108,23 +111,39 @@ async function populatePost(section, mj_name, mode, path) {
  
   
   request.open("GET", path, true);
- 
+  
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
+      
       var risposta = JSON.parse(this.response);
       var errore = risposta.error;
       risposta = risposta.result;
       //var risposta_str = JSON.stringify(this.response);
       //alert("Risposta: " + risposta_str);
 
+    
       if (errore == "No matches found") {
-        if (mj_name == "theory")
-          document.getElementById("message").innerHTML =
+        if (mj_name == "theory"){
+          if(mode=="all theories"){
+            document.getElementById("message").innerHTML =
             "Created theories will appear here! Start creating now!";
             $("#search_btn").prop("disabled", true);
             $("#pop_btn").prop("disabled", true);
             $("#btn3").prop("disabled", true);
         $("#message").show();
+          }
+          else if(mode=="topics"){
+            $("#posts").empty();
+            $("#tag").empty();
+
+            
+            $("#tags").hide();
+            $("#posts").hide();
+            document.getElementById("search_tag_name_msg").innerHTML = "Topic not found!";
+
+
+          }
+        }
       } else {
         var risposta_len = risposta.length;
         $("#message").hide();
@@ -156,8 +175,9 @@ async function populatePost(section, mj_name, mode, path) {
             $("#popularity_feed").empty();
             $("#posts").hide();
             $("#tags").hide();
-            $("#pop_btn").hide();
+         
             $("#popularity_feed").show();
+            
             
 
           }
@@ -311,7 +331,7 @@ function comment(){
 function popularity_order(){
  
   var path =
- "https://pacific-stream-14038.herokuapp.com/major_element/order/upvotes/theory"
+ "https://calm-shore-44304.herokuapp.com/major_element/order/upvotes/theory"
  
     
 
