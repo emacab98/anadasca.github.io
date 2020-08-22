@@ -5,10 +5,32 @@ var img = localStorage.getItem("avatar");
 var id = localStorage.getItem("id");
 
 $(document).ready(function () {
+  var request = new XMLHttpRequest();
+    request.open('GET', `https://calm-shore-44304.herokuapp.com/leaderboard/topics`, false);
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400){
+            //alert("Response: " + this.response);
+            myObj = JSON.parse(this.response);
+            //alert("Leaderboard: "+ myObj.leaderboard);
+            document.getElementById("menu_category").innerHTML="";
+            $("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+            var s;
+            for(var i=0; i< myObj.leaderboard.length; i++){
+                s = myObj.leaderboard[i].table.name;
+                if(s!= ""){
+                    //document.getElementById("menu_category").innerHTML +=  `<option value=${s}> ${s}</option>`;
+                    $("#menu_category").append($("<option>").attr('value', s).text(s));
+                }
+            }
+        }
+        else{
+           alert("Something went wrong. Try again");
+        }
+    }
+    request.send();
   
  path = "https://calm-shore-44304.herokuapp.com/major_element/question";
-    
-    populatePost("posts", "question", "all_questions", path);
+ populatePost("posts", "question", "all_questions", path);
   });
   
 function logout() {
@@ -313,4 +335,9 @@ function popularity_order(){
 
  
     populatePost("popularity_feed", "question", "popularity", path) 
+}
+function create(){
+  localStorage.setItem("came_from", "question");
+  window.location.href = "../Create/Create.html";
+   
 }
