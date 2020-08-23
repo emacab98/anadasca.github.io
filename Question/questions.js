@@ -14,6 +14,8 @@ $(document).ready(function () {
             //alert("Leaderboard: "+ myObj.leaderboard);
             document.getElementById("menu_category").innerHTML="";
             $("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+            $("#menu_category").append($("<option>").attr('value', "All questions").text("All questions"));
+
             var s;
             for(var i=0; i< myObj.leaderboard.length; i++){
                 s = myObj.leaderboard[i].table.name;
@@ -40,6 +42,39 @@ function logout() {
     alert("You are logging out! Bye!");
     window.location.href = "../Home/Home.html";
   }
+}
+
+function report(){
+
+  var mj_id = this.name;
+  
+    var path = "https://calm-shore-44304.herokuapp.com/report/major_element" ;
+    var obj = {user_id : id, major_element_id: mj_id};
+    var data = JSON.stringify(obj);
+    var request = new XMLHttpRequest();
+  
+    request.open("POST", path, true);
+  
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        document.getElementById(mj_id + "report").innerHTML = "Reported";
+       
+        document.getElementById(mj_id + "report").style.color = "#ffb780;";
+        document.getElementById(mj_id + "report").style.cursor = "text";
+        document.getElementById(mj_id + "report").style.textDecoration = "none";
+  
+        document.getElementById(mj_id + "report").onclick = function () {
+          return false;
+        };
+        alert("Successully reported")
+       
+      } else {
+        alert("Something went wrong, please try again!");
+      }
+    };
+    request.setRequestHeader("Content-type", "text/plain");
+    request.send(data);
+
 }
 
 function upvote_function() {
@@ -295,14 +330,34 @@ async function populatePost(section, mj_name, mode, path) {
           link2.onclick = comment;
           var span2 = document.createElement("span");
           span2.className = "glyphicon glyphicon-edit";
+          var spazio2 = document.createElement("a");
+          spazio2.innerHTML = "spazio";
+          spazio2.className = "spazio";
+          //here
+          var link3 = document.createElement("a");
+          link3.name = risposta[index].table.major_element.id;
+          link3.id = risposta[index].table.major_element.id + "report";
+
+          link3.className = "my_link";
+          link3.innerHTML = " Report ";
+          link3.onclick = report;
+         
+          var span3 = document.createElement("span");
+          span3.className = "glyphicon glyphicon-scissors";
+
+
+
+          //fine
 
           div_well.appendChild(br);
-          
+          link.appendChild(span1);
           div_well.appendChild(link);
           div_well.appendChild(spazio);
           link2.appendChild(span2);
           div_well.appendChild(link2);
-
+          div_well.appendChild(spazio2);
+          link3.appendChild(span3);
+          div_well.appendChild(link3);
           
           div_col.appendChild(div_well);
 

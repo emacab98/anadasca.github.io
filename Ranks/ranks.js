@@ -226,7 +226,7 @@ function populatePostMj(section, mj_name, path) {
     if(mj_name == "theory") t_visited = true;
    else if(mj_name == "what_if") w_visited = true;
    else if(mj_name == "question") q_visited = true;
-   else to_visited = true;
+   else if(mj_name=="topic")to_visited = true;
   
     var request = new XMLHttpRequest();
   

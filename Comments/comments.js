@@ -33,7 +33,38 @@ $(document).ready(function () {
 
   populateComments();
 });
+function report(){
 
+  var mj_id = this.name;
+  alert("Name: " + name)
+    var path = "https://calm-shore-44304.herokuapp.com/report/comment" ;
+    var obj = {user_id : user, comment_id: mj_id};
+    var data = JSON.stringify(obj);
+    var request = new XMLHttpRequest();
+  
+    request.open("POST", path, true);
+  
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        document.getElementById(mj_id + "report").innerHTML = "Reported";
+       
+        document.getElementById(mj_id + "report").style.color = "#ffb780;";
+        document.getElementById(mj_id + "report").style.cursor = "text";
+        document.getElementById(mj_id + "report").style.textDecoration = "none";
+  
+        document.getElementById(mj_id + "report").onclick = function () {
+          return false;
+        };
+        alert("Successully reported")
+       
+      } else {
+        alert("Something went wrong, please try again!");
+      }
+    };
+    request.setRequestHeader("Content-type", "text/plain");
+    request.send(data);
+
+}
 async function populateComments() {
   var element = localStorage.getItem("came_from");
   var element_id = localStorage.getItem("element_id");
@@ -150,6 +181,25 @@ async function populateComments() {
         spazio.innerHTML = "spazio";
         spazio.className = "spazio";
 
+        var spazio2 = document.createElement("a");
+        spazio2.innerHTML = "spazio";
+        spazio2.className = "spazio";
+        //here
+        var link3 = document.createElement("a");
+        link3.name = found_element.comments[i].table.comment_id;
+        link3.id = found_element.comments[i].table.comment_id  + "report";
+
+        link3.className = "my_link";
+        link3.innerHTML = " Report ";
+        link3.onclick = report;
+       
+        var span3 = document.createElement("span");
+        span3.className = "glyphicon glyphicon-scissors";
+
+        link3.appendChild(span3);
+
+        //fine
+
         div_new_comment.appendChild(username);
 
         div_new_comment.appendChild(div_comment_text);
@@ -157,6 +207,8 @@ async function populateComments() {
         div_new_comment.appendChild(spazio);
 
         div_new_comment.appendChild(verify);
+        div_new_comment.appendChild(spazio2);
+        div_new_comment.appendChild(link3)
 
         div_col.appendChild(div_new_comment);
 
